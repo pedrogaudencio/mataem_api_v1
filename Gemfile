@@ -26,11 +26,17 @@ gem 'active_model_serializers'
 gem 'devise_token_auth'
 gem 'omniauth-facebook'
 
+# permissions
+gem "cancan"
+
 # cors
 gem 'rack-cors', :require => 'rack/cors'
 
 # working hours
 gem 'biz'
+
+# for file attachments
+gem "paperclip"
 
 # hide records instead of deleting
 # gem 'acts_as_paranoid', '~> 0.5.0'

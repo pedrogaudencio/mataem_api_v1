@@ -5,13 +5,9 @@ API Endpoint
 
 - finish the cuisines/categories creation (post create)
 - finish writing controllers for the filters:
-  - new_restaurant
-  - free_delivery
   - offers
-  - credit_card
-  - cuisine
-  - category
-  - area
+  - credit_card 
+- test filter
   - open_restaurants
 - fix the bugs in the orders
 - finish modules:
@@ -22,7 +18,6 @@ API Endpoint
 - SMS (waiting for the client)
 
 Final configurations missing:
-- image upload
 - permissions
 - internationalization
 - generate api documentation

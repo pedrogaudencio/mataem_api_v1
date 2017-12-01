@@ -27,6 +27,11 @@ Rails.application.routes.draw do
       end
 
       resources :vendors do
+        get :get_cuisine, on: :collection
+        get :get_category, on: :collection
+        get :just_opened, on: :collection
+        get :free_delivery, on: :collection
+        get :delivers_in, on: :collection
         resources :menu_items do
           resources :menu_item_cuisines
           resources :menu_item_categories

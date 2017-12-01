@@ -13,6 +13,57 @@ class Api::V1::VendorsController < Api::V1::ApiController
     render json: @vendor
   end
 
+  def get_cuisine
+    if params.key?(:cuisine) and not MenuItemCuisine.where(name: params[:cuisine]).first.nil?
+      @vendors = Vendor.with_cuisines(params[:cuisine])
+    end
+    if @vendors
+      render json: @vendors, location: @api_v1_vendors
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
+  def get_category
+    if params.key?(:category) and not MenuItemCategory.where(name: params[:category]).first.nil?
+      @vendors = Vendor.with_categories(params[:category])
+    end
+    if @vendors
+      render json: @vendors, location: @api_v1_vendors
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
+  def just_opened
+    @vendors = Vendor.just_opened
+    if @vendors
+      render json: @vendors, location: @api_v1_vendors
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
+  def free_delivery
+    @vendors = Vendor.free_delivery
+    if @vendors
+      render json: @vendors, location: @api_v1_vendors
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
+  def delivers_in
+    if params.key?(:area) and not Area.where(name: params[:area]).first.nil?
+      @vendors = Vendor.delivers_in(params[:area])
+    end
+    if @vendors
+      render json: @vendors, location: @api_v1_vendors
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
   # POST /vendors
   def create
     @vendor = Vendor.new(vendor_params)
