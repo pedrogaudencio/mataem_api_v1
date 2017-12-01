@@ -1,3 +1,5 @@
+require 'profile_helper'
+
 class Profile < ApplicationRecord
   belongs_to :user
   has_one :address
@@ -26,6 +28,10 @@ class Profile < ApplicationRecord
       self.save!
     end
     self.mobile_verification_code
+  end
+
+  def send_sms_code
+    send_sms(self.mobile_number, self.mobile_verification_code)
   end
 
   # TODO: create user at profile creation

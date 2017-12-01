@@ -19,6 +19,7 @@ class Api::V1::ProfilesController < Api::V1::ApiController
     @profile = Profile.new(profile_params)
 
     if @profile.save
+      @profile.send_sms_code
       render json: @profile, status: :created, location: @profile
       # TODO: send sms
     else
@@ -57,7 +58,7 @@ class Api::V1::ProfilesController < Api::V1::ApiController
     if @profile.update(mobile_number: params[:new_mobile_number],
                        mobile_number_verified: false)
       @profile.generate_mobile_code
-      # TODO: send sms
+      @profile.send_sms_code
       render json: @profile
     else
       render json: @profile.errors, status: :unprocessable_entity

@@ -7,15 +7,16 @@ API Endpoint
 - finish writing controllers for the filters:
   - offers
   - credit_card 
-- test filter
-  - open_restaurants
 - fix the bugs in the orders
 - finish modules:
   - Order Assignments/Issues
   - Coupons
   - Ads
   - Reports generation
-- SMS (waiting for the client)
+
+Needs testing:
+- SMS
+- open_restaurants filter
 
 Final configurations missing:
 - permissions

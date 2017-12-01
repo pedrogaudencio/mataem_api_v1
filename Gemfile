@@ -38,6 +38,9 @@ gem 'biz'
 # for file attachments
 gem "paperclip"
 
+# for sms module
+gem "httparty"
+
 # hide records instead of deleting
 # gem 'acts_as_paranoid', '~> 0.5.0'
 
