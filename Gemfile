@@ -35,6 +35,9 @@ gem "paperclip"
 # for sms module
 gem "httparty"
 
+# for work schedule
+gem 'tod'
+
 # hide records instead of deleting
 # gem 'acts_as_paranoid', '~> 0.5.0'
 

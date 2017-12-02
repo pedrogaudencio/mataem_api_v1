@@ -17,8 +17,8 @@ Vendor.create!(name: "McDonald's Evora",
                address: Address.first,
                delivery_time: 30,
                delivery_fee: 0,
-               cuisine: MenuItemCuisine.second,
-               category: MenuItemCategory.first)
+               cuisines: [MenuItemCuisine.second],
+               categories: [MenuItemCategory.first])
 
 Profile.create!(user_attributes: {email: "pmgaudencio@gmail.com",
                                   password: "qwertyuiop",

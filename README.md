@@ -3,10 +3,6 @@ API Endpoint
 
 ## TO DO:
 
-- finish the cuisines/categories creation (post create)
-- finish writing controllers for the filters:
-  - offers
-  - credit_card 
 - fix the bugs in the orders
 - finish modules:
   - Order Assignments/Issues
@@ -15,11 +11,10 @@ API Endpoint
   - Reports generation
 
 Needs testing:
-- SMS
-- open_restaurants filter
+- permissions
 
 Final configurations missing:
-- permissions
+- delivery boy and business permissions
 - internationalization
 - generate api documentation
 - generate database schema diagram

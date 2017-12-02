@@ -12,6 +12,7 @@ class Order < ApplicationRecord
   belongs_to :restaurant
   belongs_to :vendor
   has_many :order_items
+  has_one :order_assignment
   # has_one :coupon
 
   before_save :update_replied_at, if: :status_changed?
@@ -49,21 +50,26 @@ class Order < ApplicationRecord
   private
     def update_replied_at
       self.replied_at = Time.now
+      self.save!
     end
 
     def set_mobile_number
       self.mobile_number ||= self.user.profile.mobile_number
+      self.save!
     end
 
     def set_delivery_address
       self.delivery_address ||= self.user.profile.address
+      self.save!
     end
 
     def set_restaurant
       self.restaurant ||= self.vendor.restaurant
+      self.save!
     end
 
     def set_delivery_charges
       self.delivery_charges ||= self.vendor.delivery_fee
+      self.save!
     end
 end

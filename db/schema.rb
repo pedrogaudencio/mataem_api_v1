@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201030933) do
+ActiveRecord::Schema.define(version: 20171203001916) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
     t.integer "address_type", default: 0
@@ -18,16 +21,16 @@ ActiveRecord::Schema.define(version: 20171201030933) do
     t.string "number"
     t.string "street"
     t.string "floor"
-    t.integer "area_id"
+    t.bigint "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "profile_id"
+    t.bigint "profile_id"
     t.index ["area_id"], name: "index_addresses_on_area_id"
     t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
 
   create_table "answers", force: :cascade do |t|
-    t.integer "question_id"
+    t.bigint "question_id"
     t.string "text"
     t.integer "sort_order"
     t.integer "status", default: 0
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20171201030933) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
-    t.integer "city_id"
+    t.bigint "city_id"
     t.string "latitude"
     t.string "longitude"
     t.integer "status", default: 0
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "enquiries", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "email"
     t.string "mobile_number"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "item_choice_variants", force: :cascade do |t|
-    t.integer "item_choice_id"
+    t.bigint "item_choice_id"
     t.string "name"
     t.float "price"
     t.datetime "created_at", null: false
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "item_choices", force: :cascade do |t|
-    t.integer "menu_item_id"
+    t.bigint "menu_item_id"
     t.string "name"
     t.float "price"
     t.integer "status", default: 0
@@ -108,29 +111,31 @@ ActiveRecord::Schema.define(version: 20171201030933) do
     t.string "description"
     t.string "ingredients"
     t.float "price"
-    t.integer "menu_item_category_id"
-    t.integer "menu_item_cuisine_id"
+    t.bigint "menu_item_category_id"
+    t.bigint "menu_item_cuisine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "vendor_id"
+    t.bigint "vendor_id"
     t.index ["menu_item_category_id"], name: "index_menu_items_on_menu_item_category_id"
     t.index ["menu_item_cuisine_id"], name: "index_menu_items_on_menu_item_cuisine_id"
     t.index ["vendor_id"], name: "index_menu_items_on_vendor_id"
   end
 
   create_table "order_assignments", force: :cascade do |t|
-    t.integer "assignee_id"
+    t.bigint "order_id"
+    t.bigint "user_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignee_id"], name: "index_order_assignments_on_assignee_id"
+    t.index ["order_id"], name: "index_order_assignments_on_order_id"
+    t.index ["user_id"], name: "index_order_assignments_on_user_id"
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
+    t.bigint "order_id"
     t.integer "quantity"
-    t.integer "menu_item_id"
-    t.integer "item_choice_variants"
+    t.bigint "menu_item_id"
+    t.integer "item_choice_variants", default: [], array: true
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -139,9 +144,9 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "profile_id"
-    t.integer "area_id"
-    t.integer "vendor_id"
+    t.bigint "profile_id"
+    t.bigint "area_id"
+    t.bigint "vendor_id"
     t.integer "status", default: 0
     t.string "mobile_number"
     t.integer "delivery_type", default: 0
@@ -161,18 +166,20 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "first_name"
     t.string "last_name"
     t.string "mobile_number"
     t.boolean "mobile_number_verified", default: false
     t.string "mobile_verification_code"
-    t.integer "address_id"
+    t.bigint "address_id"
     t.integer "status", default: 0
     t.integer "loyalty_points", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
     t.index ["address_id"], name: "index_profiles_on_address_id"
+    t.index ["restaurant_id"], name: "index_profiles_on_restaurant_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -195,20 +202,18 @@ ActiveRecord::Schema.define(version: 20171201030933) do
     t.integer "sort_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "working_hours_id"
     t.string "logo_file_name"
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
-    t.time "opening_hours"
-    t.time "closing_hours"
-    t.integer "weekdays"
-    t.index ["working_hours_id"], name: "index_restaurants_on_working_hours_id"
+    t.string "opening_hours"
+    t.string "closing_hours"
+    t.integer "weekdays", default: [], array: true
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "vendor_id"
-    t.integer "user_id"
+    t.bigint "vendor_id"
+    t.bigint "user_id"
     t.integer "status", default: 0
     t.float "rating"
     t.string "comment"
@@ -223,7 +228,7 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "social_media", force: :cascade do |t|
-    t.integer "restaurant_id"
+    t.bigint "restaurant_id"
     t.string "facebook_url"
     t.string "twitter_url"
     t.string "google_plus_url"
@@ -251,9 +256,6 @@ ActiveRecord::Schema.define(version: 20171201030933) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "name"
-    t.string "nickname"
-    t.string "image"
     t.string "email"
     t.text "tokens"
     t.datetime "created_at", null: false
@@ -266,8 +268,8 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "vendor_categories", force: :cascade do |t|
-    t.integer "menu_item_category_id"
-    t.integer "vendor_id"
+    t.bigint "menu_item_category_id"
+    t.bigint "vendor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menu_item_category_id"], name: "index_vendor_categories_on_menu_item_category_id"
@@ -275,8 +277,8 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "vendor_cuisines", force: :cascade do |t|
-    t.integer "menu_item_cuisine_id"
-    t.integer "vendor_id"
+    t.bigint "menu_item_cuisine_id"
+    t.bigint "vendor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menu_item_cuisine_id"], name: "index_vendor_cuisines_on_menu_item_cuisine_id"
@@ -284,8 +286,8 @@ ActiveRecord::Schema.define(version: 20171201030933) do
   end
 
   create_table "vendor_delivery_areas", force: :cascade do |t|
-    t.integer "area_id"
-    t.integer "vendor_id"
+    t.bigint "area_id"
+    t.bigint "vendor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_vendor_delivery_areas_on_area_id"
@@ -294,21 +296,54 @@ ActiveRecord::Schema.define(version: 20171201030933) do
 
   create_table "vendors", force: :cascade do |t|
     t.string "name"
-    t.integer "address_id"
-    t.integer "restaurant_id"
+    t.bigint "address_id"
+    t.bigint "restaurant_id"
     t.boolean "preorder"
     t.boolean "pickup"
-    t.float "delivery_fee"
+    t.float "delivery_fee", default: 0.0
     t.integer "delivery_time"
-    t.integer "status"
-    t.integer "cuisine_id"
-    t.integer "category_id"
+    t.integer "status", default: 0
+    t.bigint "cuisines_id"
+    t.bigint "categories_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_vendors_on_address_id"
-    t.index ["category_id"], name: "index_vendors_on_category_id"
-    t.index ["cuisine_id"], name: "index_vendors_on_cuisine_id"
+    t.index ["categories_id"], name: "index_vendors_on_categories_id"
+    t.index ["cuisines_id"], name: "index_vendors_on_cuisines_id"
     t.index ["restaurant_id"], name: "index_vendors_on_restaurant_id"
   end
 
+  add_foreign_key "addresses", "areas"
+  add_foreign_key "addresses", "profiles"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "areas", "cities"
+  add_foreign_key "enquiries", "users"
+  add_foreign_key "item_choice_variants", "item_choices"
+  add_foreign_key "item_choices", "menu_items"
+  add_foreign_key "menu_items", "menu_item_categories"
+  add_foreign_key "menu_items", "menu_item_cuisines"
+  add_foreign_key "menu_items", "vendors"
+  add_foreign_key "order_assignments", "orders"
+  add_foreign_key "order_assignments", "users"
+  add_foreign_key "order_items", "menu_items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "areas"
+  add_foreign_key "orders", "profiles"
+  add_foreign_key "orders", "vendors"
+  add_foreign_key "profiles", "addresses"
+  add_foreign_key "profiles", "restaurants"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "vendors"
+  add_foreign_key "social_media", "restaurants"
+  add_foreign_key "vendor_categories", "menu_item_categories"
+  add_foreign_key "vendor_categories", "vendors"
+  add_foreign_key "vendor_cuisines", "menu_item_cuisines"
+  add_foreign_key "vendor_cuisines", "vendors"
+  add_foreign_key "vendor_delivery_areas", "areas"
+  add_foreign_key "vendor_delivery_areas", "vendors"
+  add_foreign_key "vendors", "addresses"
+  add_foreign_key "vendors", "menu_item_categories", column: "categories_id"
+  add_foreign_key "vendors", "menu_item_cuisines", column: "cuisines_id"
+  add_foreign_key "vendors", "restaurants"
 end

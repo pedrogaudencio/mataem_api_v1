@@ -1,7 +1,8 @@
-require 'profile_helper'
-
 class Profile < ApplicationRecord
+  include ProfileHelper
+
   belongs_to :user
+  belongs_to :restaurant, optional: true  # for staff members
   has_one :address
   accepts_nested_attributes_for :address, :user
   default_scope { :active }
@@ -33,6 +34,4 @@ class Profile < ApplicationRecord
   def send_sms_code
     send_sms(self.mobile_number, self.mobile_verification_code)
   end
-
-  # TODO: create user at profile creation
 end

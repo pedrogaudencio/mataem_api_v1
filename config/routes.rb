@@ -41,10 +41,17 @@ Rails.application.routes.draw do
         end
         resources :reviews
         resources :orders do
-          resources :order_items, on: :member
-          resources :order_assignments, on: :member
+          member do
+            resources :order_items
+            resources :order_assignments do
+              get :list_pending, on: :member
+              post :accept_assignment, on: :member
+            end
+          end
         end
       end
+      resources :menu_item_cuisines
+      resources :menu_item_categories
 
       resources :enquiries
       resources :questions do

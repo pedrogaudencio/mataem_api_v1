@@ -30,16 +30,57 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     user ||= User.new
-    # if user.customer?
+    if user.customer?
+      can :read, [Address,
+                  Area,
+                  City,
+                  Restaurant,
+                  Vendor,
+                  VendorCategory,
+                  VendorCuisine,
+                  VendorDeliveryArea,
+                  ItemChoiceVariant,
+                  ItemChoice,
+                  MenuItem,
+                  MenuItemCategory,
+                  MenuItemCuisine,
+                  Enquiry,
+                  Question,
+                  Answer,
+                  SocialMedia,
+                  Review]
+      can :create, [Order, Review]
+      can :read, Order, :profile => { :id => user.profile.id }
 
-    # elsif user.delivery_boy?
+      # Profile
+      can [:read, :create, :update,
+           :get_mobile_verification_code,
+           :change_mobile_number,
+           :verify_mobile_number], Profile, :id => user.profile.id
+      can :activate_profile, Profile, :status => 1
+      can :deactivate_profile, Profile, :status => 0
+    elsif user.delivery_boy?
+      # can :read, Order, :order_assignment => { :assignee => {
+      #     :id => user.id
+      #   }
+      # }
+      # can :list_pending, OrderAssignment
+      # can :accept_assignment, OrderAssignment, :status => 0
+      # can , OrderIssue
+    elsif user.business?
+      # can [:read, :create, :update], Restaurant, :id => user.profile.restaurant.id
+      # can [:read, :create, :update], Order, :restaurant {
+      #   :id => user.profile.restaurant.id
+      # }
+      # can [:read, :create, :update], OrderAssignment, :order => {
+      #   :restaurant => {
+      #     :id => user.profile.restaurant.id
+      #   }
+      # }
+    elsif user.admin?
+      can :manage, :all
+    else
 
-    # elsif user.business?
-    #     can :manage, Restaurat, 
-    # elsif user.admin?
-    #     can :manage, :all
-    # else
-
-    # end
+    end
   end
 end
