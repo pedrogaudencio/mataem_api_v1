@@ -29,9 +29,6 @@ gem "cancan"
 # cors
 gem 'rack-cors', :require => 'rack/cors'
 
-# working hours
-gem 'biz'
-
 # for file attachments
 gem "paperclip"
 
