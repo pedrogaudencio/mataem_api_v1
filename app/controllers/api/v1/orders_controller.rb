@@ -1,33 +1,53 @@
 class Api::V1::OrdersController < Api::V1::ApiController
-  # include Orderable
-
   before_action :set_order, only: [:show, :update, :destroy]
 
   # GET /orders
   def index
-    # if params
-    #   if params[:status] and [:pending, :accepted, :rejected].any? { |s| params[:status] == s }
-    #     puts "cona"
-    #     @orders = Order.send(params[:status])
-    #   elsif params[:progress_status]
-    #     @orders = Order.send(params[:progress_status])
-    #   elsif params[:delivery_type]
-    #     @orders = Order.send(params[:delivery_type])
-    #   end
-    # else
-    #   @orders = Order.all
-    # end
+    @orders = Order.all
 
-    render json: @orders#, each_serializer: OrderSerializer, scope: {
-    #   'status': params[:status],
-    #   'progress_status': params[:progress_status],
-    #   'delivery_type': params[:delivery_type]
-    # }
+    render json: @orders
   end
 
   # GET /orders/1
   def show
     render json: @order
+  end
+
+  def filter_status
+    if params.key?(:status) and [:pending, :accepted, :rejected].include?(params[:status])
+      @orders = Order.try(params[:status])
+    end
+    if @orders
+      render json: @orders, location: @api_v1_orders
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
+  def filter_progress
+    if params.key?(:progress_status) and [:pending_decision
+                                          :accepted_order
+                                          :out_for_delivery
+                                          :delivered
+                                          :closed].include?(params[:progress_status])
+      @orders = Order.try(params[:progress_status])
+    end
+    if @orders
+      render json: @orders, location: @api_v1_orders
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
+  def filter_delivery_type
+    if params.key?(:delivery_type) and [:delivery, :pickup].include?(params[:delivery_type])
+      @orders = Order.try(params[:delivery_type])
+    end
+    if @orders
+      render json: @orders, location: @api_v1_orders
+    else
+      render json: nil, status: :not_found
+    end
   end
 
   # POST /orders

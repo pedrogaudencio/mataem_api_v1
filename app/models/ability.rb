@@ -77,6 +77,9 @@ class Ability
       #     :id => user.profile.restaurant.id
       #   }
       # }
+      # can [:accept, :reject,
+      #      :mark_out_for_delivery,
+      #      :mark_delivered], Order, :restaurant => { :id => user.restaurant.id }
     elsif user.admin?
       can :manage, :all
     else

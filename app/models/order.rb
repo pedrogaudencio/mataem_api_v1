@@ -25,8 +25,9 @@ class Order < ApplicationRecord
   # update_finishing_time in controller
 
   def calculate_total
-    total = self.order_items.sum(:price)
+    total = self.order_items.sum(:price) + self.service_fee
     total -= self.coupon.value if self.coupon
+    total = 0 if total < 0
     self.update(total: total)
   end
 
