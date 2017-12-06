@@ -1,19 +1,28 @@
 class Api::V1::AddressesController < Api::V1::ApiController
   before_action :set_address, only: [:show, :update, :destroy]
 
-  # GET /addresses
+  # api :GET, '/addresses', "List all addresses"
   def index
     @addresses = Address.all
 
     render json: @addresses
   end
 
-  # GET /addresses/1
+  # api :GET, '/addresses/:id'
+  # param :id, :number
   def show
     render json: @address
   end
 
-  # POST /addresses
+  # api :POST, '/addresses'
+  # param :address, Hash, :desc => "Create address" do
+  #   param :address_type, ["apartment", "house", "office"], :desc => "Address type"
+  #   param :building, String, :desc => "Building number"
+  #   param :number, String, :desc => "Door number"
+  #   param :street, String, :desc => "Street name"
+  #   param :floor, String, :desc => "Floor"
+  #   param :area_id, :number, :desc => "Area :id"
+  # end
   def create
     @address = Address.new(address_params)
 

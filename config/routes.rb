@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   # devise_for :users, controllers: {omniauth_callbacks: 'callbacks'}
 
   # /api/v1/
@@ -40,16 +41,14 @@ Rails.application.routes.draw do
           end
         end
         resources :reviews
-        resources :orders do
-          member do
-            resources :order_items
-            get :filter_status, on: :member
-            get :filter_progress, on: :member
-            get :filter_delivery_type, on: :member
-            resources :order_assignments do
-              get :list_pending, on: :member
-              post :accept_assignment, on: :member
-            end
+        resources :orders, on: :member do
+          resources :order_items
+          get :filter_status, on: :member
+          get :filter_progress, on: :member
+          get :filter_delivery_type, on: :member
+          resources :order_assignments do
+            get :list_pending, on: :member
+            post :accept_assignment, on: :member
           end
         end
       end

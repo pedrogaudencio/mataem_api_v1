@@ -712,7 +712,7 @@
 			"name": "CUISINE: get all vendors with that cuisine",
 			"request": {
 				"url": {
-					"raw": "http://localhost:3000/api/v1/vendors/get_cuisine?cuisine=Asian",
+					"raw": "http://localhost:3000/api/v1/vendors/get_cuisine?cuisine=American",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -727,7 +727,7 @@
 					"query": [
 						{
 							"key": "cuisine",
-							"value": "Asian",
+							"value": "American",
 							"equals": true,
 							"description": ""
 						}
@@ -735,8 +735,17 @@
 					"variable": []
 				},
 				"method": "GET",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Fancy\"\n}"
+				},
 				"description": ""
 			},
 			"response": []
@@ -825,6 +834,86 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CUISINE: create new cuisine",
+			"request": {
+				"url": "http://localhost:3000/api/v1/menu_item_cuisines",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Fancy\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CUISINE: create new category",
+			"request": {
+				"url": "http://localhost:3000/api/v1/menu_item_categories",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Promotion\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDERS: create order for that vendor",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"profile_id\": 1,\n  \"area_id\": 1,\n  \"vendor_id\": 1,\n  \n  \"text\": \"This is an answer.\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CITIES: create one",
+			"request": {
+				"url": "http://localhost:3000/api/v1/cities/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"City\"\n}"
+				},
 				"description": ""
 			},
 			"response": []

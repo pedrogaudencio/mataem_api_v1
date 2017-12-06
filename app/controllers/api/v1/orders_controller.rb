@@ -1,14 +1,15 @@
 class Api::V1::OrdersController < Api::V1::ApiController
   before_action :set_order, only: [:show, :update, :destroy]
 
-  # GET /orders
+  # api :GET, '/orders', "List all orders"
   def index
     @orders = Order.all
 
     render json: @orders
   end
 
-  # GET /orders/1
+  # api :GET, '/orders/:id', "Show user profile"
+  # param :id, :number
   def show
     render json: @order
   end
@@ -25,10 +26,10 @@ class Api::V1::OrdersController < Api::V1::ApiController
   end
 
   def filter_progress
-    if params.key?(:progress_status) and [:pending_decision
-                                          :accepted_order
-                                          :out_for_delivery
-                                          :delivered
+    if params.key?(:progress_status) and [:pending_decision,
+                                          :accepted_order,
+                                          :out_for_delivery,
+                                          :delivered,
                                           :closed].include?(params[:progress_status])
       @orders = Order.try(params[:progress_status])
     end
