@@ -6,7 +6,6 @@ module ProfileHelper
     passwd = Rails.application.secrets.sms_passwd
     senderid = Rails.application.secrets.sms_senderid
     url = Rails.application.secrets.sms_url
-    puts code
     request = HTTParty.get(
       url, query: {
         username: userid,

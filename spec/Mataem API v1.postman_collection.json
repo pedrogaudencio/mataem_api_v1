@@ -917,6 +917,26 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "MENU ITEMS: create menu item for specific vendor",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"name\": \"Name\",\n\"description\": \"Description\",\n\"ingredients\": \"Ingredients\",\n\"price\": 20,\n\"menu_item_category_id\": 1,\n\"menu_item_cuisine_id\": 1,\n\"vendor_id\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

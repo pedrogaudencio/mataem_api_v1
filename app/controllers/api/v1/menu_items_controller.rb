@@ -50,8 +50,8 @@ class Api::V1::MenuItemsController < Api::V1::ApiController
                                         :description,
                                         :ingredients,
                                         :price,
-                                        :vendor,
-                                        :menu_item_category,
-                                        :menu_item_cuisine)
+                                        :vendor_id,
+                                        :menu_item_category_id,
+                                        :menu_item_cuisine_id)
     end
 end
