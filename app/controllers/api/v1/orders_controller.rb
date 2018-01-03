@@ -26,6 +26,7 @@ class Api::V1::OrdersController < Api::V1::ApiController
   end
 
   def filter_progress
+    # TODO: change array options from model import variable
     if params.key?(:progress_status) and [:pending_decision,
                                           :accepted_order,
                                           :out_for_delivery,
@@ -41,6 +42,7 @@ class Api::V1::OrdersController < Api::V1::ApiController
   end
 
   def filter_delivery_type
+    # TODO: change array options from model import variable
     if params.key?(:delivery_type) and [:delivery, :pickup].include?(params[:delivery_type])
       @orders = Order.try(params[:delivery_type])
     end
@@ -84,6 +86,22 @@ class Api::V1::OrdersController < Api::V1::ApiController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:profile, :mobile_number, :area, :vendor, :status, :delivery_type, :finishing_time, :delivery_charges, :service_fee, :order_source, :progress_status, :delivery_address, :total)
+      params.require(:order).permit(:profile,
+                                    :mobile_number,
+                                    :area_id,
+                                    :vendor_id,
+                                    :status,
+                                    :delivery_type,
+                                    :finishing_time,
+                                    :delivery_charges,
+                                    :service_fee,
+                                    :order_source,
+                                    :progress_status,
+                                    :delivery_address,
+                                    menu_item_attributes: [
+                                      :quantity,
+                                      :menu_item_id,
+                                      :item_choice_variants
+                                    ])
     end
 end

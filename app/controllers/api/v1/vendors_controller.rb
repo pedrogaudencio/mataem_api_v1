@@ -69,6 +69,9 @@ class Api::V1::VendorsController < Api::V1::ApiController
     @vendor = Vendor.new(vendor_params)
 
     if @vendor.save
+      @vendor.update(cuisines: MenuItemCuisine.where(id: params[:cuisine_ids]),
+                     categories: MenuItemCategory.where(id: params[:category_ids]),
+                     delivery_areas: Area.where(id: params[:delivery_area_ids]))
       render json: @vendor, status: :created, location: @api_v1_vendor
     else
       render json: @vendor.errors, status: :unprocessable_entity
@@ -78,6 +81,9 @@ class Api::V1::VendorsController < Api::V1::ApiController
   # PATCH/PUT /vendors/1
   def update
     if @vendor.update(vendor_params)
+      @vendor.update(cuisines: MenuItemCuisine.where(id: params[:cuisine_ids]),
+                     categories: MenuItemCategory.where(id: params[:category_ids]),
+                     delivery_areas: Area.where(id: params[:delivery_area_ids]))
       render json: @vendor
     else
       render json: @vendor.errors, status: :unprocessable_entity
@@ -105,8 +111,8 @@ class Api::V1::VendorsController < Api::V1::ApiController
                                      :delivery_fee,
                                      :delivery_time,
                                      :status,
-                                     :cuisines,
-                                     :categories,
-                                     :delivery_areas)
+                                     :cuisine_ids,
+                                     :category_ids,
+                                     :delivery_area_ids)
     end
 end

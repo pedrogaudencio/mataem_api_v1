@@ -7,18 +7,24 @@ class Order < ApplicationRecord
                           closed: 4 }
   enum delivery_type: { delivery: 0, pickup: 1 }
 
-  belongs_to :profile
+  belongs_to :profile, optional: true
   belongs_to :area
-  belongs_to :restaurant
+  belongs_to :restaurant, optional: true
   belongs_to :vendor
   has_many :order_items
   has_one :order_assignment
   # has_one :coupon
 
   before_save :update_replied_at, if: :status_changed?
+  before_save :set_mobile_number
+  before_save :set_delivery_address
+  before_save :set_profile
   after_create :calculate_total
 
-  validates_presence_of :profile, :status, :progress_status, :delivery_type, :area, :vendor, :restaurant, :mobile_number, :delivery_address
+  validates_presence_of :status, :progress_status, :delivery_type, :area, :vendor
+
+  # TODO: validate mobile number if not present then profile.mobile_number else raise
+  # 
 
   # NOTE: add replied_by to track who updates the order progress status
   
@@ -54,23 +60,27 @@ class Order < ApplicationRecord
       self.save!
     end
 
+    def set_profile
+      self.profile ||= @current_user.profile
+      # TODO: raise if not profile
+      self.save!
+    end
+
     def set_mobile_number
-      self.mobile_number ||= self.user.profile.mobile_number
+      self.mobile_number ||= @current_user.profile.mobile_number
+      # TODO: raise if not mobile_number
       self.save!
     end
 
     def set_delivery_address
-      self.delivery_address ||= self.user.profile.address
-      self.save!
-    end
-
-    def set_restaurant
-      self.restaurant ||= self.vendor.restaurant
+      self.delivery_address ||= @current_user.profile.address
+      # TODO: raise if not address
       self.save!
     end
 
     def set_delivery_charges
       self.delivery_charges ||= self.vendor.delivery_fee
+      # TODO: raise if not delivery_charges
       self.save!
     end
 end

@@ -15,33 +15,49 @@ Needs testing:
 https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
 Final configurations missing:
-- delivery boy and business permissions
-- internationalization
-- generate api documentation
-- generate database schema diagram
 
-1. criar Order
-2. criar Order mais complexo com variações de menu_items
-3. escrever POST para criar Order
+[x] criar Order
+[x] criar Order mais complexo com variações de menu_items
+[x] escrever POST para criar Order
 
 
-Order Assignments
-1. get Orders that are pending assignment
-2. escrever OrderAssignment para aquele order
+BUG: vendor_cuisines, vendor_categories e delivery_areas
 
-OrderIssues
-1. get OrderIssue para certa Order
-2. escrever POST para criar OrderIssue
+1. finish Order, Order Assignment/Issue, Coupons, Ads API endpoints
 
-Ads
-1. gerar model
-2. escrever POST para criar Ad
+1. finish API endpoints
+  Order Assignments
+  1. get Orders that are pending assignment
+  2. escrever OrderAssignment para aquele order
 
-Coupons
-1. gerar model
-2. escrever POST para criar Coupon
-3. invalidar após uso na Order
-4. aplicar desconto na Order
+  OrderIssues
+  1. get OrderIssue para certa Order
+  2. escrever POST para criar OrderIssue
 
-Reports generation
-1. ?
+  Ads
+  1. gerar model
+  2. escrever POST para criar Ad
+
+  Coupons
+  1. gerar model
+  2. escrever POST para criar Coupon
+  3. invalidar após uso na Order
+  4. aplicar desconto na Order
+
+  Reports generation
+  1. ?
+
+2. calculate time for loyalty points (need to check the front-end first)
+3. translations for Arabic
+4. push notifications (need more details on what to notify the customer about)
+5. reports (need more details)
+6. check QPAY payments integration (wait for @kutten to reply)
+
+[ ] delivery boy and business permissions, check guest
+[ ] internationalization https://github.com/globalize/globalize
+[ ] generate api documentation -> ApiPie
+[x] generate database schema diagram -> EDR
+
+[ ] autenticar user
+[ ] juntar profile
+[ ] criar order baseada no @current_user.profile
