@@ -16,14 +16,7 @@ https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
 Final configurations missing:
 
-[x] criar Order
-[x] criar Order mais complexo com variações de menu_items
-[x] escrever POST para criar Order
-
-
-BUG: vendor_cuisines, vendor_categories e delivery_areas
-
-1. finish Order, Order Assignment/Issue, Coupons, Ads API endpoints
+1. finish Order Assignment/Issue, Coupons, Ads API endpoints
 
 1. finish API endpoints
   Order Assignments
@@ -59,5 +52,6 @@ BUG: vendor_cuisines, vendor_categories e delivery_areas
 [x] generate database schema diagram -> EDR
 
 [ ] autenticar user
-[ ] juntar profile
+[ ] assign profile
+[ ] uncomment order profile/mobile stuff
 [ ] criar order baseada no @current_user.profile

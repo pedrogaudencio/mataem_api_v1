@@ -58,7 +58,16 @@ class Api::V1::OrdersController < Api::V1::ApiController
     @order = Order.new(order_params)
 
     if @order.save
-      render json: @order, status: :created, location: @order
+      params[:order_items_attributes].each do |order_item|
+        puts order_item.inspect
+        OrderItem.create(
+          order: @order,
+          quantity: order_item[:quantity],
+          menu_item: MenuItem.find(order_item[:menu_item_id]),
+          item_choice_variants: ItemChoiceVariant.where(id: order_item[:item_choice_variants]))
+      end
+      @order.calculate_total
+      render json: @order, status: :created, location: @api_v1_order
     else
       render json: @order.errors, status: :unprocessable_entity
     end
@@ -98,7 +107,7 @@ class Api::V1::OrdersController < Api::V1::ApiController
                                     :order_source,
                                     :progress_status,
                                     :delivery_address,
-                                    menu_item_attributes: [
+                                    order_items_attributes: [
                                       :quantity,
                                       :menu_item_id,
                                       :item_choice_variants

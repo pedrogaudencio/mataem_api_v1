@@ -4,7 +4,7 @@ class OrderItem < ApplicationRecord
 
   before_save :set_price
 
-  validates_presence_of :order, :menu_item, :price
+  validates_presence_of :order, :menu_item
 
   def add_item_variant(variant_id)
     self.variants << variant_id
@@ -17,13 +17,12 @@ class OrderItem < ApplicationRecord
 
   private
     def set_price
-      if not self.item_choice_variants.empty?
+      if self.item_choice_variants and not self.item_choice_variants.empty?
         self.price = self.item_choice_variants.inject(0.0) { |total, variant_id|
           total + ItemChoiceVariant.find(variant_id).price
         }
       else
         self.price = self.menu_item.price
       end
-      self.save!
     end
 end

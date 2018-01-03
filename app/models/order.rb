@@ -16,10 +16,10 @@ class Order < ApplicationRecord
   # has_one :coupon
 
   before_save :update_replied_at, if: :status_changed?
-  before_save :set_mobile_number
-  before_save :set_delivery_address
-  before_save :set_profile
-  after_create :calculate_total
+  # before_save :set_mobile_number
+  # before_save :set_delivery_address
+  # before_save :set_profile
+  # after_create :calculate_total
 
   validates_presence_of :status, :progress_status, :delivery_type, :area, :vendor
 
@@ -31,8 +31,8 @@ class Order < ApplicationRecord
   # update_finishing_time in controller
 
   def calculate_total
-    total = self.order_items.sum(:price) + self.service_fee
-    total -= self.coupon.value if self.coupon
+    total = self.order_items.sum(:price) + self.vendor.delivery_fee
+    # total -= self.coupon.value if self.coupon
     total = 0 if total < 0
     self.update(total: total)
   end
