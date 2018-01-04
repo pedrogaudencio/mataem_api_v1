@@ -3,7 +3,11 @@ class Api::V1::MenuItemsController < Api::V1::ApiController
 
   # GET /menu_items
   def index
-    @menu_items = MenuItem.all
+    if params.key?(:vendor_id)
+      @menu_items = MenuItem.where(vendor_id: params[:vendor_id])
+    else
+      @menu_items = MenuItem.all
+    end
 
     render json: @menu_items
   end
