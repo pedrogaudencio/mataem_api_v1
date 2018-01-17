@@ -15,13 +15,14 @@ class Api::V1::OrderAssignmentsController < Api::V1::ApiController
   end
 
   def list_pending
-    @order_assignments = OrderAssignment.pending
+    @order_assignments = OrderAssignment.pending_from_vendor(params[:vendor_id])
 
     render json: @order_assignments
   end
 
   def accept_assignment
-    if @order_assignment.pending? and @order_assignment.update(assignee: user,
+    current_user = User.last
+    if @order_assignment.pending? and @order_assignment.update(user: current_user,
                                                                status: 1)
       render json: @order_assignment
     else
@@ -31,7 +32,9 @@ class Api::V1::OrderAssignmentsController < Api::V1::ApiController
 
   # POST /order_assignments
   def create
-    @order_assignment = OrderAssignment.new(order_assignment_params)
+    @order = Order.find(params[:order_id])
+    @user = User.find(params[:assignee_id])
+    @order_assignment = OrderAssignment.new(order: @order, user_id: @user.id)
 
     if @order_assignment.save
       render json: @order_assignment, status: :created, location: @api_v1_vendor_order_order_assignment
@@ -62,8 +65,8 @@ class Api::V1::OrderAssignmentsController < Api::V1::ApiController
 
     # Only allow a trusted parameter "white list" through.
     def order_assignment_params
-      params.require(:order_assignment).permit(:assignee_id,
-                                               :order_id,
+      params.require(:order_assignment).permit(:order_id,
+                                               :user_id,
                                                :status)
     end
 end

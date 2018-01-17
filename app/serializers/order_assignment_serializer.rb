@@ -1,4 +1,5 @@
 class OrderAssignmentSerializer < ActiveModel::Serializer
   attributes :id, :status
-  has_one :assignee
+  belongs_to :user
+  belongs_to :order
 end

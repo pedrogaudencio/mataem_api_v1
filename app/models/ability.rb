@@ -60,7 +60,7 @@ class Ability
       can :activate_profile, Profile, :status => 1
       can :deactivate_profile, Profile, :status => 0
     elsif user.delivery_boy?
-      # can :read, Order, :order_assignment => { :assignee => {
+      # can :read, Order, :order_assignment => { :user => {
       #     :id => user.id
       #   }
       # }

@@ -3,9 +3,8 @@ API Endpoint
 
 ## TO DO:
 
-- fix the bugs in the orders
 - finish modules:
-  - Order Assignments/Issues
+  - Order Issues
   - Coupons
   - Ads
   - Reports generation
