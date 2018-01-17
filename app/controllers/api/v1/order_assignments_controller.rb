@@ -62,6 +62,8 @@ class Api::V1::OrderAssignmentsController < Api::V1::ApiController
 
     # Only allow a trusted parameter "white list" through.
     def order_assignment_params
-      params.require(:order_assignment).permit(:assignee_id, :status)
+      params.require(:order_assignment).permit(:assignee_id,
+                                               :order_id,
+                                               :status)
     end
 end

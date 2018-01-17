@@ -16,6 +16,8 @@ https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
 Final configurations missing:
 
+1. item_choice_variants
+
 1. finish Order Assignment/Issue, Coupons, Ads API endpoints
 
 1. finish API endpoints
@@ -52,6 +54,8 @@ Final configurations missing:
 [x] generate database schema diagram -> EDR
 
 [ ] autenticar user
+https://github.com/lynndylanhurley/devise_token_auth/issues/75
+https://github.com/lynndylanhurley/devise_token_auth#controller-methods
 [ ] assign profile
 [ ] uncomment order profile/mobile stuff
 [ ] criar order baseada no @current_user.profile

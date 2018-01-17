@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
 
   enum status: { active: 0, inactive: 1, blocked: 2 }
 
-  validates_presence_of :user, :first_name, :last_name, :mobile_number
+  validates_presence_of :user #, :first_name, :last_name, :mobile_number
   validates :loyalty_points, :numericality => { :greater_than_or_equal_to => 0 }
   validates_associated :user, :address
 

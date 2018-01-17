@@ -19,10 +19,10 @@ class OrderItem < ApplicationRecord
     def set_price
       if self.item_choice_variants and not self.item_choice_variants.empty?
         self.price = self.item_choice_variants.inject(0.0) { |total, variant_id|
-          total + ItemChoiceVariant.find(variant_id).price
+          total + (ItemChoiceVariant.find(variant_id).price * self.quantity)
         }
       else
-        self.price = self.menu_item.price
+        self.price = self.menu_item.price * self.quantity
       end
     end
 end

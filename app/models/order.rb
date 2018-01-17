@@ -32,6 +32,7 @@ class Order < ApplicationRecord
 
   def calculate_total
     total = self.order_items.sum(:price) + self.vendor.delivery_fee
+    # FIXME: uncomment this
     # total -= self.coupon.value if self.coupon
     total = 0 if total < 0
     self.update(total: total)

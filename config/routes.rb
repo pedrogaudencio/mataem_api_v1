@@ -46,7 +46,7 @@ Rails.application.routes.draw do
           get :filter_status, on: :member
           get :filter_progress, on: :member
           get :filter_delivery_type, on: :member
-          resources :order_assignments do
+          resources :order_assignments, on: :member do
             get :list_pending, on: :member
             post :accept_assignment, on: :member
           end

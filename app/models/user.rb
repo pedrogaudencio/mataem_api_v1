@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   delegate :full_name, to: :profile
 
   # callbacks
-  # after_initialize do
-  #   build_profile(language: 'da', user: self) if profile.nil?
-  # end
+  after_initialize do
+    Profile.create!(user: self) if profile.nil?
+    # build_profile(user: self) if profile.nil?
+  end
 end

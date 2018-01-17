@@ -16,9 +16,9 @@ class Api::V1::ProfilesController < Api::V1::ApiController
 
   # POST /profiles
   def create
-    @profile = Profile.new(profile_params)
+    @profile = current_user.profile
 
-    if @profile.save
+    if @profile.update(profile_params)
       @profile.send_sms_code
       render json: @profile, status: :created, location: @profile
       # TODO: send sms
@@ -92,7 +92,7 @@ class Api::V1::ProfilesController < Api::V1::ApiController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find(params[:id]) or current_user.profile
     end
 
     # Only allow a trusted parameter "white list" through.
