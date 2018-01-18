@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   # before_save :set_profile
   # after_create :calculate_total
 
-  validates_presence_of :status, :progress_status, :delivery_type, :area, :vendor
+  validates_presence_of :status, :progress_status, :delivery_type, :area, :vendor, :mobile_number
 
   # TODO: validate mobile number if not present then profile.mobile_number else raise
   # 

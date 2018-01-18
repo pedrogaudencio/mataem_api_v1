@@ -4,9 +4,10 @@ API Endpoint
 ## TO DO:
 
 - finish modules:
-  - Order Issues
   - Coupons
   - Ads
+  - Billing
+  - Payment (?)
   - Reports generation
 
 Needs testing:
@@ -17,17 +18,9 @@ Final configurations missing:
 
 1. item_choice_variants
 
-1. finish Order Assignment/Issue, Coupons, Ads API endpoints
+1. finish Ads and Coupons API endpoints
 
 1. finish API endpoints
-  Order Assignments
-  1. get Orders that are pending assignment
-  2. escrever OrderAssignment para aquele order
-
-  OrderIssues
-  1. get OrderIssue para certa Order
-  2. escrever POST para criar OrderIssue
-
   Ads
   1. gerar model
   2. escrever POST para criar Ad
@@ -38,8 +31,19 @@ Final configurations missing:
   3. invalidar após uso na Order
   4. aplicar desconto na Order
 
+
+  Billing
+  1. gerar model
+  2. escrever POST para criar Billing
+  3. gerar Payment (comentar)
+  
+  Payment (?)
+  * still waiting on the client to decide
+
   Reports generation
-  1. ?
+  1. https://docs.google.com/spreadsheets/d/1gYEBMPYlCPyYfM2uzXgJu-FGGWubGfIX2su69CWoaVQ/edit#gid=1962083908
+
+  check user scope folder
 
 2. calculate time for loyalty points (need to check the front-end first)
 3. translations for Arabic

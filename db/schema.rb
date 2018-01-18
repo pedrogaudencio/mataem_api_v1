@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203001916) do
+ActiveRecord::Schema.define(version: 20180117225747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,14 @@ ActiveRecord::Schema.define(version: 20171203001916) do
     t.index ["menu_item_category_id"], name: "index_menu_items_on_menu_item_category_id"
     t.index ["menu_item_cuisine_id"], name: "index_menu_items_on_menu_item_cuisine_id"
     t.index ["vendor_id"], name: "index_menu_items_on_vendor_id"
+  end
+
+  create_table "order_assignment_issues", force: :cascade do |t|
+    t.bigint "order_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_assignment_issues_on_order_id"
   end
 
   create_table "order_assignments", force: :cascade do |t|
@@ -323,6 +331,7 @@ ActiveRecord::Schema.define(version: 20171203001916) do
   add_foreign_key "menu_items", "menu_item_categories"
   add_foreign_key "menu_items", "menu_item_cuisines"
   add_foreign_key "menu_items", "vendors"
+  add_foreign_key "order_assignment_issues", "orders"
   add_foreign_key "order_assignments", "orders"
   add_foreign_key "order_assignments", "users"
   add_foreign_key "order_items", "menu_items"

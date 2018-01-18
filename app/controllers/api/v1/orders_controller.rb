@@ -57,8 +57,14 @@ class Api::V1::OrdersController < Api::V1::ApiController
   def create
     @order = Order.new(order_params)
     # FIXME: uncomment this
-    # @order.profile = current_user.profile
+    # if current_profile
+    #   @order.profile = current_user.profile
+    #   if not @order.mobile_number
+    #     @order.mobile_number = current_user.profile.mobile_number
+    #   end
+    # end
     @order.profile = Profile.first
+    @order.mobile_number = Profile.first.mobile_number
 
     if @order.save
       params[:order_items_attributes].each do |order_item|

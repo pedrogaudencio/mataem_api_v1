@@ -62,7 +62,9 @@ Rails.application.routes.draw do
       end
       resources :reviews
       resources :order_items
-      resources :orders
+      resources :orders, on: :member do
+        resources :order_assignment_issues, on: :member
+      end
     end
   end
 end
