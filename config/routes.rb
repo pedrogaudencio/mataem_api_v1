@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  apipie
+  if Rails.env.development?
+    apipie
+  end
   # devise_for :users, controllers: {omniauth_callbacks: 'callbacks'}
 
   # /api/v1/
