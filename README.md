@@ -47,8 +47,8 @@ Final configurations missing:
 
 2. calculate time for loyalty points (need to check the front-end first)
 3. translations for Arabic
-4. push notifications (need more details on what to notify the customer about)
-5. reports (need more details)
+4. push notifications (onesignal.com)
+5. reports
 6. check QPAY payments integration (wait for @kutten to reply)
 
 [ ] delivery boy and business permissions, check guest
@@ -59,6 +59,6 @@ Final configurations missing:
 [ ] autenticar user
 https://github.com/lynndylanhurley/devise_token_auth/issues/75
 https://github.com/lynndylanhurley/devise_token_auth#controller-methods
-[ ] assign profile
+[x] assign profile
 [ ] uncomment order profile/mobile stuff
 [ ] criar order baseada no @current_user.profile

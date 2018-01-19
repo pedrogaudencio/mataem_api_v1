@@ -67,6 +67,7 @@ Rails.application.routes.draw do
       resources :orders, on: :member do
         resources :order_assignment_issues, on: :member
       end
+      resources :coupons
     end
   end
 end

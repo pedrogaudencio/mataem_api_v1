@@ -18,6 +18,9 @@ gem 'puma', '~> 3.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 
+# for environment variables setting
+gem 'figaro'
+
 # auth
 # gem 'devise'
 gem 'devise_token_auth'
@@ -37,6 +40,9 @@ gem "httparty"
 
 # for work schedule
 gem 'tod'
+
+# for notifications
+gem 'one_signal'
 
 # hide records instead of deleting
 # gem 'acts_as_paranoid', '~> 0.5.0'

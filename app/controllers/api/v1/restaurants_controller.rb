@@ -16,6 +16,9 @@ class Api::V1::RestaurantsController < Api::V1::ApiController
   # POST /restaurants
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    if params.key?(:weekdays)
+      @restaurant.weekdays = params[:weekdays]
+    end
 
     if @restaurant.save
       render json: @restaurant, status: :created, location: @api_v1_restaurant

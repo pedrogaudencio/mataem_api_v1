@@ -1,5 +1,5 @@
 class Api::V1::ProfilesController < Api::V1::ApiController
-  before_action :set_profile, only: [:show, :update, :destroy,
+  before_action :set_profile, only: [:create, :show, :update, :destroy,
     :get_mobile_verification_code, :verify_mobile_number, :change_mobile_number]
 
   # GET /profiles
@@ -16,11 +16,13 @@ class Api::V1::ProfilesController < Api::V1::ApiController
 
   # POST /profiles
   def create
-    @profile = current_user.profile
+    if profile_params.key?(:address_id)
+      @profile.address = Address.find(profile_params[:address_id])
+    end
 
     if @profile.update(profile_params)
       @profile.send_sms_code
-      render json: @profile, status: :created, location: @profile
+      render json: @profile, status: :created, location: @api_v1_profile
       # TODO: send sms
     else
       render json: @profile.errors, status: :unprocessable_entity
@@ -29,7 +31,14 @@ class Api::V1::ProfilesController < Api::V1::ApiController
 
   # PATCH/PUT /profiles/1
   def update
+    if profile_params.key?(:address_id)
+      @profile.address = Address.find(profile_params[:address_id])
+    end
+
     if @profile.update(profile_params)
+      if not @profile.mobile_number_verified
+        @profile.send_sms_code
+      end
       render json: @profile
     else
       render json: @profile.errors, status: :unprocessable_entity
@@ -92,25 +101,24 @@ class Api::V1::ProfilesController < Api::V1::ApiController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id]) or current_user.profile
+      if not current_api_v1_user.nil?
+        @profile = current_api_v1_user.profile
+      elsif params.key?(:user_id)
+        @profile = User.find(params[:user_id]).try(:profile)
+      else
+        @profile = Profile.find(params[:id])
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
     def profile_params
       params.require(:profile).permit(:mobile_number,
-                                      :mobile_number_verified,
                                       :mobile_verification_code,
                                       :address_id,
                                       :status,
                                       :loyalty_points,
-                                      user_attributes: [:email,
-                                                        :password,
-                                                        :password_confirmation],
-                                      address_attributes: [:area,
-                                                           :address_type,
-                                                           :building,
-                                                           :number,
-                                                           :street,
-                                                           :floor])
+                                      :user_id,
+                                      :first_name,
+                                      :last_name)
     end
 end

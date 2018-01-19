@@ -3,7 +3,12 @@ class Api::V1::ItemChoiceVariantsController < Api::V1::ApiController
 
   # GET /item_choice_variants
   def index
-    @item_choice_variants = ItemChoiceVariant.all
+    if params.key?(:item_choice_id)
+      @item_choice_variants = ItemChoiceVariant.where(
+        item_choice_id: params[:item_choice_id])
+    else
+      @item_choice_variants = ItemChoiceVariant.all
+    end
 
     render json: @item_choice_variants
   end

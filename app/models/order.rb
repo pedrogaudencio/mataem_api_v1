@@ -13,15 +13,15 @@ class Order < ApplicationRecord
   belongs_to :vendor
   has_many :order_items
   has_one :order_assignment
-  # has_one :coupon
+  has_one :coupon
 
   before_save :update_replied_at, if: :status_changed?
+  # before_save :set_profile
   # before_save :set_mobile_number
   # before_save :set_delivery_address
-  # before_save :set_profile
-  # after_create :calculate_total
+  after_create :calculate_total
 
-  validates_presence_of :status, :progress_status, :delivery_type, :area, :vendor, :mobile_number
+  validates_presence_of :status, :progress_status, :delivery_type, :area, :vendor#, :mobile_number
 
   # TODO: validate mobile number if not present then profile.mobile_number else raise
   # 
@@ -31,11 +31,12 @@ class Order < ApplicationRecord
   # update_finishing_time in controller
 
   def calculate_total
-    total = self.order_items.sum(:price) + self.vendor.delivery_fee
-    # FIXME: uncomment this
-    # total -= self.coupon.value if self.coupon
-    total = 0 if total < 0
-    self.update(total: total)
+    t = self.order_items.sum(:price) + self.vendor.delivery_fee
+    if not self.coupon.nil?# and self.coupon.is_valid_from_order?
+      t -= self.coupon.value
+    end
+    t = 0 if t < 0
+    self.update(total: t)
   end
 
   def accept
@@ -62,19 +63,19 @@ class Order < ApplicationRecord
     end
 
     def set_profile
-      self.profile ||= @current_user.profile
+      self.profile ||= @api_v1_current_user.profile
       # TODO: raise if not profile
       self.save!
     end
 
     def set_mobile_number
-      self.mobile_number ||= @current_user.profile.mobile_number
+      self.mobile_number ||= @api_v1_current_user.profile.mobile_number
       # TODO: raise if not mobile_number
       self.save!
     end
 
     def set_delivery_address
-      self.delivery_address ||= @current_user.profile.address
+      self.delivery_address ||= @api_v1_current_user.profile.address
       # TODO: raise if not address
       self.save!
     end

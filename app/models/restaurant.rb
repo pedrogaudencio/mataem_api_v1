@@ -32,8 +32,8 @@ class Restaurant < ApplicationRecord
 
   def open?
     if not self.weekdays.nil? and self.weekdays.include?(Date.today.wday)
-      return Tod::Shift.new(Tod::TimeOfDay.new(self.opening_hours),
-                            Tod::TimeOfDay.new(self.closing_hours)).include?(
+      return Tod::Shift.new(Tod::TimeOfDay.parse(self.opening_hours),
+                            Tod::TimeOfDay.parse(self.closing_hours)).include?(
                             Tod::TimeOfDay.new(Time.now.hour, Time.now.min))
     end
     return false

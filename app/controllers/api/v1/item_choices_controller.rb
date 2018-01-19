@@ -3,7 +3,12 @@ class Api::V1::ItemChoicesController < Api::V1::ApiController
 
   # GET /item_choices
   def index
-    @item_choices = ItemChoice.all
+    if params.key?(:menu_item_id)
+      @item_choices = ItemChoice.where(
+        menu_item_id: params[:menu_item_id])
+    else
+      @item_choices = ItemChoice.all
+    end
 
     render json: @item_choices
   end
