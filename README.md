@@ -4,61 +4,41 @@ API Endpoint
 ## TO DO:
 
 - finish modules:
-  - Coupons
-  - Ads
-  - Billing
+  - Reports
+  - Translation
+  - Billing (?)
   - Payment (?)
-  - Reports generation
 
 Needs testing:
 - permissions
 https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
-Final configurations missing:
-
-1. item_choice_variants
-
-1. finish Ads and Coupons API endpoints
-
 1. finish API endpoints
-  Ads
-  1. gerar model
-  2. escrever POST para criar Ad
-
   Coupons
-  1. gerar model
-  2. escrever POST para criar Coupon
-  3. invalidar após uso na Order
-  4. aplicar desconto na Order
+  3. mark as used after order payment
 
-
-  Billing
-  1. gerar model
-  2. escrever POST para criar Billing
-  3. gerar Payment (comentar)
-  
-  Payment (?)
-  * still waiting on the client to decide
+  Billing?
+  1. model
+  2. POST request example on PostMan
+  3. generate Payment from Billing
 
   Reports generation
   1. https://docs.google.com/spreadsheets/d/1gYEBMPYlCPyYfM2uzXgJu-FGGWubGfIX2su69CWoaVQ/edit#gid=1962083908
 
-  check user scope folder
-
-2. calculate time for loyalty points (need to check the front-end first)
 3. translations for Arabic
 4. push notifications (onesignal.com)
 5. reports
-6. check QPAY payments integration (wait for @kutten to reply)
 
 [ ] delivery boy and business permissions, check guest
 [ ] internationalization https://github.com/globalize/globalize
 [ ] generate api documentation -> ApiPie
 [x] generate database schema diagram -> EDR
 
-[ ] autenticar user
+[ ] authenticate user
 https://github.com/lynndylanhurley/devise_token_auth/issues/75
 https://github.com/lynndylanhurley/devise_token_auth#controller-methods
+[ ] include auth example in PostMan
+https://www.getpostman.com/docs/postman/sending_api_requests/authorization
+https://medium.com/devtechtipstricks/build-a-simple-rails-api-server-auth0-jwt-authentication-react-from-scratch-in-30-minutes-or-257cbb2a939a
 [x] assign profile
 [ ] uncomment order profile/mobile stuff
-[ ] criar order baseada no @current_user.profile
