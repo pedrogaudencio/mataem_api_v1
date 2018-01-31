@@ -15,6 +15,19 @@ ActiveRecord::Schema.define(version: 20180130173229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "address_translations", force: :cascade do |t|
+    t.integer "address_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "building"
+    t.string "number"
+    t.string "street"
+    t.string "floor"
+    t.index ["address_id"], name: "index_address_translations_on_address_id"
+    t.index ["locale"], name: "index_address_translations_on_locale"
+  end
+
   create_table "addresses", force: :cascade do |t|
     t.integer "address_type", default: 0
     t.string "building"
@@ -27,6 +40,16 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.bigint "profile_id"
     t.index ["area_id"], name: "index_addresses_on_area_id"
     t.index ["profile_id"], name: "index_addresses_on_profile_id"
+  end
+
+  create_table "advertisement_translations", force: :cascade do |t|
+    t.integer "advertisement_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["advertisement_id"], name: "index_advertisement_translations_on_advertisement_id"
+    t.index ["locale"], name: "index_advertisement_translations_on_locale"
   end
 
   create_table "advertisements", force: :cascade do |t|
@@ -42,6 +65,16 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.index ["restaurant_id"], name: "index_advertisements_on_restaurant_id"
   end
 
+  create_table "answer_translations", force: :cascade do |t|
+    t.integer "answer_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "text"
+    t.index ["answer_id"], name: "index_answer_translations_on_answer_id"
+    t.index ["locale"], name: "index_answer_translations_on_locale"
+  end
+
   create_table "answers", force: :cascade do |t|
     t.bigint "question_id"
     t.string "text"
@@ -50,6 +83,16 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "area_translations", force: :cascade do |t|
+    t.integer "area_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["area_id"], name: "index_area_translations_on_area_id"
+    t.index ["locale"], name: "index_area_translations_on_locale"
   end
 
   create_table "areas", force: :cascade do |t|
@@ -68,6 +111,16 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "city_translations", force: :cascade do |t|
+    t.integer "city_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["city_id"], name: "index_city_translations_on_city_id"
+    t.index ["locale"], name: "index_city_translations_on_locale"
   end
 
   create_table "coupons", force: :cascade do |t|
@@ -95,6 +148,26 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_enquiries_on_user_id"
+  end
+
+  create_table "item_choice_translations", force: :cascade do |t|
+    t.integer "item_choice_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["item_choice_id"], name: "index_item_choice_translations_on_item_choice_id"
+    t.index ["locale"], name: "index_item_choice_translations_on_locale"
+  end
+
+  create_table "item_choice_variant_translations", force: :cascade do |t|
+    t.integer "item_choice_variant_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["item_choice_variant_id"], name: "index_8748ef9b10ae361e158e724840f33271dc455bf8"
+    t.index ["locale"], name: "index_item_choice_variant_translations_on_locale"
   end
 
   create_table "item_choice_variants", force: :cascade do |t|
@@ -127,12 +200,44 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "menu_item_category_translations", force: :cascade do |t|
+    t.integer "menu_item_category_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["locale"], name: "index_menu_item_category_translations_on_locale"
+    t.index ["menu_item_category_id"], name: "index_menu_item_category_translations_on_menu_item_category_id"
+  end
+
+  create_table "menu_item_cuisine_translations", force: :cascade do |t|
+    t.integer "menu_item_cuisine_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["locale"], name: "index_menu_item_cuisine_translations_on_locale"
+    t.index ["menu_item_cuisine_id"], name: "index_menu_item_cuisine_translations_on_menu_item_cuisine_id"
+  end
+
   create_table "menu_item_cuisines", force: :cascade do |t|
     t.string "name"
     t.integer "status", default: 0
     t.integer "sort_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "menu_item_translations", force: :cascade do |t|
+    t.integer "menu_item_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "description"
+    t.string "ingredients"
+    t.index ["locale"], name: "index_menu_item_translations_on_locale"
+    t.index ["menu_item_id"], name: "index_menu_item_translations_on_menu_item_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -187,9 +292,9 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.integer "status", default: 0
     t.string "mobile_number"
     t.integer "delivery_type", default: 0
-    t.integer "finishing_time"
-    t.float "delivery_charges"
-    t.float "service_fee"
+    t.integer "finishing_time", default: 0
+    t.float "delivery_charges", default: 0.0
+    t.float "service_fee", default: 0.0
     t.string "order_source"
     t.datetime "replied_at"
     t.integer "progress_status", default: 0
@@ -220,12 +325,32 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "question_translations", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "text"
+    t.index ["locale"], name: "index_question_translations_on_locale"
+    t.index ["question_id"], name: "index_question_translations_on_question_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "text"
     t.integer "sort_order"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurant_translations", force: :cascade do |t|
+    t.integer "restaurant_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["locale"], name: "index_restaurant_translations_on_locale"
+    t.index ["restaurant_id"], name: "index_restaurant_translations_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -329,6 +454,16 @@ ActiveRecord::Schema.define(version: 20180130173229) do
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_vendor_delivery_areas_on_area_id"
     t.index ["vendor_id"], name: "index_vendor_delivery_areas_on_vendor_id"
+  end
+
+  create_table "vendor_translations", force: :cascade do |t|
+    t.integer "vendor_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["locale"], name: "index_vendor_translations_on_locale"
+    t.index ["vendor_id"], name: "index_vendor_translations_on_vendor_id"
   end
 
   create_table "vendors", force: :cascade do |t|
