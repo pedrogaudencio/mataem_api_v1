@@ -12,5 +12,15 @@ class CreateRestaurants < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    reversible do |dir|
+      dir.up do
+        Restaurant.create_translation_table!(name: :string)
+      end
+
+      dir.down do
+        Restaurant.drop_translation_table!
+      end
+    end
   end
 end

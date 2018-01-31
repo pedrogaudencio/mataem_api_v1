@@ -7,5 +7,15 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    reversible do |dir|
+      dir.up do
+        Question.create_translation_table!(text: :string)
+      end
+
+      dir.down do
+        Question.drop_translation_table!
+      end
+    end
   end
 end

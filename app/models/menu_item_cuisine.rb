@@ -7,6 +7,8 @@ class MenuItemCuisine < ApplicationRecord
 
   validates_presence_of :name, :status
 
+  translates :name, fallbacks_for_empty_translations: true
+
   after_create :assign_sort_order
 
   def assign_sort_order

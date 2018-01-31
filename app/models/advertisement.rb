@@ -7,4 +7,6 @@ class Advertisement < ApplicationRecord
                                                           "image/png"]
 
   validates_presence_of :title, :restaurant
+
+  translates :title, fallbacks_for_empty_translations: true
 end

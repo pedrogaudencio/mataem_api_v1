@@ -10,5 +10,18 @@ class CreateAddresses < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    reversible do |dir|
+      dir.up do
+        Address.create_translation_table!(building: :string,
+                                          number: :string,
+                                          street: :string,
+                                          floor: :string)
+      end
+
+      dir.down do
+        Address.drop_translation_table!
+      end
+    end
   end
 end

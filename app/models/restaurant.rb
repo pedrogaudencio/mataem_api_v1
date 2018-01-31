@@ -8,13 +8,15 @@ class Restaurant < ApplicationRecord
   has_many :orders
   has_many :orders
   has_attached_file :logo
-  validates_attachment_content_type :logo, content_type: ["image/jpg",
-                                                          "image/jpeg",
-                                                          "image/png"]
+
+  translates :name, fallbacks_for_empty_translations: true
 
   after_create :assign_sort_order, :assign_working_hours
 
   validates_presence_of :name, :status
+  validates_attachment_content_type :logo, content_type: ["image/jpg",
+                                                          "image/jpeg",
+                                                          "image/png"]
 
   default_scope { order(sort_order: :desc) }
 

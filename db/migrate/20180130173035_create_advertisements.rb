@@ -7,5 +7,15 @@ class CreateAdvertisements < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    reversible do |dir|
+      dir.up do
+        Advertisement.create_translation_table!(title: :string)
+      end
+
+      dir.down do
+        Advertisement.drop_translation_table!
+      end
+    end
   end
 end
