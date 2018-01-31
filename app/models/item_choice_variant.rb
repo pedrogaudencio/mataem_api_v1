@@ -6,6 +6,8 @@ class ItemChoiceVariant < ApplicationRecord
   validate :variants_within_limits?
   validates_associated :item_choice
 
+  translates :name, fallbacks_for_empty_translations: true
+
   def variants_within_limits?
     return true if self.item_choice.max_variants.nil? or self.item_choice.variants.empty?
     if self.item_choice.variants.count == self.item_choice.max_variants

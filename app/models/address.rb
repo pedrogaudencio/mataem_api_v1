@@ -11,4 +11,9 @@ class Address < ApplicationRecord
   validates_associated :area
 
   delegate :city, to: :area
+
+  translates :building,
+             :number,
+             :street,
+             :floor, fallbacks_for_empty_translations: true
 end

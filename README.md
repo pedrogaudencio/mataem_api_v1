@@ -5,7 +5,6 @@ API Endpoint
 
 - finish modules:
   - Reports
-  - Translation
   - Billing (?)
   - Payment (?)
 
@@ -16,6 +15,11 @@ https://github.com/ryanb/cancan/wiki/Defining-Abilities
 1. finish API endpoints
   Coupons
   3. mark as used after order payment
+  uncomment validations:
+    valid_user_type
+    valid_app_type
+    valid_min_order_value
+    valid_expiry_date
 
   Billing?
   1. model

@@ -5,6 +5,8 @@ class MenuItemCategory < ApplicationRecord
 
   enum status: { active: 0, inactive: 1 }
 
+  translates :name, fallbacks_for_empty_translations: true
+
   validates_presence_of :name, :status
 
   after_create :assign_sort_order

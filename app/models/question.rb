@@ -7,6 +7,8 @@ class Question < ApplicationRecord
 
   validates_presence_of :text, :status
 
+  translates :text, fallbacks_for_empty_translations: true
+
   private
     def assign_sort_order
       if not self.sort_order

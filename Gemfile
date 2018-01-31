@@ -41,6 +41,9 @@ gem "httparty"
 # for work schedule
 gem 'tod'
 
+# for translations
+gem 'globalize'
+
 # for notifications
 gem 'one_signal'
 

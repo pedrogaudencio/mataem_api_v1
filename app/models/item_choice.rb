@@ -11,6 +11,8 @@ class ItemChoice < ApplicationRecord
   validates :max_variants, :numericality => { :greater_than_or_equal_to => 0 }, :allow_nil => true
   validate :date_within_limits?
 
+  translates :name, fallbacks_for_empty_translations: true
+
   default_scope { where(status: :available) }
   scope :ending_soon, -> { where(limit_date_until: Date.today..Date.today.in(1.week)) }
   scope :upcoming, -> { where(limit_date_from: Date.tomorrow..Date.today.in(1.week)) }

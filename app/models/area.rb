@@ -8,4 +8,6 @@ class Area < ApplicationRecord
 
   validates_presence_of :name, :status, :city
   validates_associated :city
+
+  translates :name, fallbacks_for_empty_translations: true
 end

@@ -10,5 +10,17 @@ class CreateMenuItems < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    reversible do |dir|
+      dir.up do
+        MenuItem.create_translation_table!(name: :string,
+                                           description: :string,
+                                           ingredients: :string)
+      end
+
+      dir.down do
+        MenuItem.drop_translation_table!
+      end
+    end
   end
 end

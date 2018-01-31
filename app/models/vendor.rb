@@ -15,6 +15,8 @@ class Vendor < ApplicationRecord
 
   validates_presence_of :name, :address, :restaurant, :delivery_time
 
+  translates :name, fallbacks_for_empty_translations: true
+
   # TODO: test these filters
   scope :just_opened, -> { where('created_at >= ?', 1.month.ago) }
   scope :free_delivery, -> { where(delivery_fee: 0) }
