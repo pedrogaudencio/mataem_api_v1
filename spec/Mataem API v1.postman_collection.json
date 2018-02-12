@@ -529,7 +529,7 @@
 			"response": []
 		},
 		{
-			"name": "ORDERS: get all orders for that vendor",
+			"name": "ORDER: get all orders for that vendor",
 			"request": {
 				"url": "http://localhost:3000/api/v1/vendors/1/orders",
 				"method": "GET",
@@ -662,7 +662,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Burger King 2\",\n  \"address_id\": 1,\n  \"restaurant_id\": 1,\n  \"preorder\": true,\n  \"pickup\": true,\n  \"delivery_fee\": 5,\n  \"delivery_time\": 30,\n  \"cuisine_ids\": [1],\n  \"category_ids\": [1]\n}"
+					"raw": "{\n  \"name\": \"Burger King new\",\n  \"address_id\": 1,\n  \"restaurant_id\": 1,\n  \"preorder\": true,\n  \"pickup\": true,\n  \"delivery_fee\": 5,\n  \"delivery_time\": 30,\n  \"delivery_area_ids\": [1, 2],\n  \"cuisine_ids\": [1, 2],\n  \"category_ids\": [1]\n}"
 				},
 				"description": ""
 			},
@@ -879,26 +879,6 @@
 			"response": []
 		},
 		{
-			"name": "ORDERS: create order for that vendor",
-			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"profile_id\": 1,\n  \"area_id\": 1,\n  \"vendor_id\": 1,\n  \n  \"text\": \"This is an answer.\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "CITIES: create one",
 			"request": {
 				"url": "http://localhost:3000/api/v1/cities/",
@@ -932,7 +912,358 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n\"name\": \"Name\",\n\"description\": \"Description\",\n\"ingredients\": \"Ingredients\",\n\"price\": 20,\n\"menu_item_category_id\": 1,\n\"menu_item_cuisine_id\": 1,\n\"vendor_id\": 1\n}"
+					"raw": "{\n\t\"menu_item\": {\n\t\t\"name\": \"Name\",\n\t\t\"description\": \"Description\",\n\t\t\"ingredients\": \"Ingredients\",\n\t\t\"price\": 20,\n\t\t\"menu_item_category_id\": 1,\n\t\t\"menu_item_cuisine_id\": 1,\n\t\t\"vendor_id\": 1\n\t\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER: create order for specific vendor",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_items_attributes\": [\n    {\n      \"quantity\": 1,\n      \"menu_item_id\": 1,\n      \"item_choice_variants\": []\n    },\n    {\n      \"quantity\": 2,\n      \"menu_item_id\": 2,\n      \"item_choice_variants\": []\n    },\n    {\n      \"quantity\": 1,\n      \"menu_item_id\": 3,\n      \"item_choice_variants\": []\n    }\n  ],\n  \"delivery_address\": \"Address to deliver\",\n  \"area_id\": 1,\n  \"vendor_id\": 1,\n  \"delivery_type\": 0,\n  \"order_source\": \"postman\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ITEM CHOICES: create item choice for a specific menu item",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"menu_item_id\": 1,\n\t\"name\": \"Item choice 1\",\n\t\"price\": 22,\n\t\"max_variants\": 3\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ITEM CHOICE VARIANT: create variant for that item choice",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1/item_choice_variants",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"item_choice_id\": 1,\n\t\"name\": \"Name 1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER: get specific order for specific vendor",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT: create order assignment for specific order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/21/order_assignments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"order_id\": 21,\n\t\"assignee_id\": 3\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT: accept order assignment for specific order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/21/order_assignments/1/accept_assignment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"order_id\": 21,\n\t\"assignee_id\": 3\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT: list pending order assignments for specific vendor",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/list_pending_order_assignments",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"assignee_id\": 3\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT ISSUE: create order assignment issue for specific order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT ISSUE: get order assignment issues for specific order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT ISSUE: get specific order assignment issue for specific order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "USERS: Sign in user",
+			"request": {
+				"url": "http://localhost:3000/api/v1/auth/sign_in",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"pmgaudencio@gmail.com\", \"password\": \"qwertyuiop\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "USERS: Register new user",
+			"request": {
+				"url": "http://localhost:3000/api/v1/auth/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test1@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PROFILE: create new profile 1",
+			"request": {
+				"url": "http://localhost:3000/api/v1/profiles",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_id\": 1,\n\t\"first_name\": \"test_first\",\n\t\"last_name\": \"test_last\",\n\t\"mobile_number\": \"123456789\",\n\t\"address_id\": 1\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "COUPONS: create new coupon",
+			"request": {
+				"url": "http://localhost:3000/api/v1/coupons",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"value\": 10.0\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "COUPONS: add coupon to order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/coupons/1",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"coupon_id\": 1,\n\t\"order_id\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ADS: create new ad",
+			"request": {
+				"url": "http://localhost:3000/api/v1/advertisements/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"restaurant_id\": 1,\n\t\"title\": \"Ad Example\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ADS: add click",
+			"request": {
+				"url": "http://localhost:3000/api/v1/advertisements/1/click",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"advertisement_id\": 1\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ADS: get ad",
+			"request": {
+				"url": "http://localhost:3000/api/v1/advertisements/1/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"advertisement_id\": 1\n}\n"
 				},
 				"description": ""
 			},
