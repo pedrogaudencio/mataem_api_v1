@@ -1,9 +1,9 @@
 class Api::V1::OrdersController < Api::V1::ApiController
-  before_action :set_order, only: [:show]
+  before_action :set_order, only: [:show, :update, :destroy]
 
   # api :GET, '/orders', "List all orders"
   def index
-    @orders = Order.all
+    @orders = Order.where(vendor_id: order_params[:vendor_id])
 
     render json: @orders
   end

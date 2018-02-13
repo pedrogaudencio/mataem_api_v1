@@ -11,9 +11,9 @@ class Order < ApplicationRecord
   belongs_to :area
   belongs_to :restaurant, optional: true
   belongs_to :vendor
-  has_many :order_items
-  has_one :order_assignment
-  has_one :coupon
+  has_many :order_items, dependent: :destroy
+  has_one :order_assignment, dependent: :destroy
+  has_one :coupon, dependent: :destroy
 
   before_save :update_replied_at, if: :status_changed?
   # before_save :set_profile
