@@ -80,19 +80,19 @@ class Api::V1::OrdersController < Api::V1::ApiController
     end
   end
 
-  # # PATCH/PUT /orders/1
-  # def update
-  #   if @order.update(order_params)
-  #     render json: @order
-  #   else
-  #     render json: @order.errors, status: :unprocessable_entity
-  #   end
-  # end
+  # PATCH/PUT /orders/1
+  def update
+    if @order.update(order_params)
+      render json: @order
+    else
+      render json: @order.errors, status: :unprocessable_entity
+    end
+  end
 
-  # # DELETE /orders/1
-  # def destroy
-  #   @order.destroy
-  # end
+  # DELETE /orders/1
+  def destroy
+    @order.destroy
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -34,3 +34,21 @@ API Endpoint
 
 ##  Payment (?)
   - check QPAY payments integration: still waiting for @kutten to reply
+
+## Bugfix
+
+high priority
+[x] cant get who send order,(`/orders`)
+[x] cant get menu item name in order(`/orders`)
+[x] cant make the order accept , reject( PUT DELETE `/orders` not working )
+[x] cant see api for for delivery boy create
+that's a normal user with a normal profile, but you have to specify the role: { customer: 0, delivery_boy: 1, business: 2, admin: 3 }
+[x] delivery boy assignment not found(`/order_assignments`) (expect query body)
+  
+
+2nd priority
+[ ] delivery area id, cuisine id , category id doesnt affect get result(`/vendors`)
+[x] no name field in get result (`/profiles`)
+[ ] image and logo upload field in (`menu items , restaurant`)
+[ ] `item_choice_variants:[1,2,3]` this field doesnt affect get result `/orders`
+[ ] for item choices some are single aelect some are multi select so expect a field for it in item_choice (eg :https://www.talabat.com/qatar/restaurant/16326/pizza-hut--barwa-village check pizza)
