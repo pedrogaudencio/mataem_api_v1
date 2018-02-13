@@ -1268,6 +1268,46 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT: get order assignments for specific order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1/order_assignments",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"assignee_id\": 3\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT ISSUE: get order assignment issues for specific order",
+			"request": {
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

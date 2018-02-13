@@ -3,7 +3,8 @@ class Api::V1::OrderAssignmentIssuesController < Api::V1::ApiController
 
   # GET /order_assignment_issues
   def index
-    @order_assignment_issues = OrderAssignmentIssue.all
+    @order_assignment_issues = OrderAssignmentIssue.where(
+      order: params[:order_id])
 
     render json: @order_assignment_issues
   end

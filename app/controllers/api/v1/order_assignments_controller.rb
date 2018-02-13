@@ -4,7 +4,8 @@ class Api::V1::OrderAssignmentsController < Api::V1::ApiController
 
   # GET /order_assignments
   def index
-    @order_assignments = OrderAssignment.all
+    @order_assignments = OrderAssignment.where(
+      order: params[:order_id])
 
     render json: @order_assignments
   end
