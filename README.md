@@ -47,7 +47,8 @@ that's a normal user with a normal profile, but you have to specify the role: { 
   
 2nd priority
 - [x] no name field in get result (`/profiles`)
-- [ ] delivery area id, cuisine id , category id doesnt affect get result(`/vendors`)
+- [x] cuisine id , category id (`/vendors`)
+- [ ] delivery area id
 - [ ] `item_choice_variants:[1,2,3]` this field doesnt affect get result `/orders`
 - [ ] for item choices some are single aelect some are multi select so expect a field for it in item_choice (eg :https://www.talabat.com/qatar/restaurant/16326/pizza-hut--barwa-village check pizza)
 - [ ] image and logo upload field in (`menu items , restaurant`)
