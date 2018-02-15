@@ -1,5 +1,5 @@
 class Api::V1::VendorsController < Api::V1::ApiController
-  before_action :set_vendor, only: [:show, :update, :destroy, :update_delivery_areas]
+  before_action :set_vendor, only: [:show, :update, :destroy]
 
   # GET /vendors
   def index
@@ -92,16 +92,17 @@ class Api::V1::VendorsController < Api::V1::ApiController
   end
 
   def update_delivery_areas
+    @vendor = Vendor.find(params[:vendor_id])
+
     if params.key?(:delivery_area_ids)
-      VendorDeliveryArea.where(
-        vendor_id: @vendor.id,
-        area_id: params[:delivery_area_ids]).destroy
+      VendorDeliveryArea.where(vendor_id: params[:vendor_id]).destroy_all
       params[:delivery_area_ids].each do |area_id|
-        VendorDeliveryArea.create(vendor_id: @vendor.id, area_id: area_id)
+        VendorDeliveryArea.create(vendor_id: params[:vendor_id], area_id: area_id)
       end
       render json: @vendor
+    else
+      render json: @vendor.errors, status: :unprocessable_entity
     end
-    render json: @vendor.errors, status: :unprocessable_entity
   end
 
   # DELETE /vendors/1

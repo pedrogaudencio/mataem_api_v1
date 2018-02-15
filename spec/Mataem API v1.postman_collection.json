@@ -1514,7 +1514,7 @@
 		{
 			"name": "VENDORS: update delivery areas",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/31/update_delivery_areas",
+				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/32/update_delivery_areas",
 				"method": "PUT",
 				"header": [
 					{
@@ -1525,7 +1525,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"vendor\": {\n\t  \"id\": 31\n\t},\n\t\"delivery_area_ids\": [1, 2]\n}"
+					"raw": "{\n\t\"delivery_area_ids\": [1, 2]\n}"
 				},
 				"description": ""
 			},
