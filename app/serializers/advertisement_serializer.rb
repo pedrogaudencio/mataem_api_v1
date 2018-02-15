@@ -1,3 +1,3 @@
 class AdvertisementSerializer < ActiveModel::Serializer
-  attributes :id, :title, :restaurant, :total_clicks
+  attributes :id, :title, :restaurant, :image, :total_clicks
 end

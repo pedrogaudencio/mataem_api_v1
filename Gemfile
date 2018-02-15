@@ -34,6 +34,7 @@ gem 'rack-cors', :require => 'rack/cors'
 
 # for file attachments
 gem "paperclip"
+gem "aws-sdk"
 
 # for sms module
 gem "httparty"
