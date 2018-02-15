@@ -26,7 +26,9 @@ Rails.application.routes.draw do
       resources :cities
       resources :restaurants do
         resources :social_media, on: :member
-        resources :vendors, on: :member
+        resources :vendors, on: :member do
+          put :update_delivery_areas
+        end
       end
 
       resources :vendors do

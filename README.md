@@ -54,50 +54,24 @@ that's a normal user with a normal profile, but you have to specify the role: { 
 - [ ] image and logo upload field in (`menu items , restaurant`)
 
 
-[x] doesn't get who send order
-[x] 
-3. when i PUT/PATCH with status:1 or 2 (other than 0) internal server error ( i have told to @kutten so discuss is he fixing it)
-4. delivery_areas issue told yesterday not fixed yet
+4. restaurant delivery_areas issue
 5. delete `/profiles/1` 500 internal server error (edited)
 6. except these we have image upload problem for all (edited)
 7. delete not working only for profile_id 1
 
 
-coupons
 write examples for everything
-uncomment stuff hardcoded
-provide restaurant user creation
 
 we need examples for
 How to upload images
-How to create a restaurant user
-create a Delivery user
-1.doesn’t get who send order ,
-2. expect get `/orders` api to list all orders in superuser
-4.delivery_areas issue told yesterday not fixed yet
-5. save address issue for users
-6.restaurant weekdays wont comes in get resuylt
-7.post `/reviews` api
-
-```{
-    "user": [
-        "must exist",
-        "can't be blank"
-    ]
-}```
-
-8.post `/enqueries`  
-
-```"user": null```
+4. delivery_areas issue told yesterday not fixed yet
 
 9.`item choice` expect a field for multi or single select
-10.restaurant create `no field for username, email, password`
-11. DELIVERY BOY registration (edited)
-Coupons
 
 criar seeds, enviar format
 
-orders:
-fix send profile id and automatically fetch profile mobile number and address
-get all orders for that vendor
-`/orders_admin/` api to list all orders in superuser
+
+
+bugfix
+
+

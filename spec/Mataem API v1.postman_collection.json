@@ -562,7 +562,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"address_type\": \"apartment\",\n  \"building\": \"Building\",\n  \"number\": \"1\",\n  \"street\": \"Street\",\n  \"floor\": \"2nd\",\n  \"area_id\": 1\n}"
+					"raw": "{\n\t\"address\": {\n\t\t\"address_type\": \"apartment\",\n\t\t\"building\": \"Building\",\n\t\t\"number\": \"1\",\n\t\t\"street\": \"Street\",\n\t\t\"floor\": \"2nd\",\n\t\t\"area_id\": 1\n\t}\n}"
 				},
 				"description": ""
 			},
@@ -662,7 +662,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"vendor\": {\n\t  \"name\": \"Burger King new 2\",\n\t  \"address_id\": 1,\n\t  \"restaurant_id\": 1,\n\t  \"preorder\": true,\n\t  \"pickup\": true,\n\t  \"delivery_fee\": 5,\n\t  \"delivery_time\": 30,\n\t  \"delivery_area_ids\": [1, 2],\n\t  \"cuisine_ids\": [1, 2],\n\t  \"category_ids\": [1]\n\t}\n}"
+					"raw": "{\n\t\"vendor\": {\n\t  \"name\": \"Burger King\",\n\t  \"address_id\": 1,\n\t  \"restaurant_id\": 1,\n\t  \"preorder\": true,\n\t  \"pickup\": true,\n\t  \"delivery_fee\": 5,\n\t  \"delivery_time\": 30\n\t},\n\t\"delivery_area_ids\": [1, 2]\n}"
 				},
 				"description": ""
 			},
@@ -1506,6 +1506,26 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"address\": {\n\t\t\"profile_id\": 3,\n\t\t\"address_type\": \"apartment\",\n\t\t\"building\": \"Building\",\n\t\t\"number\": \"1\",\n\t\t\"street\": \"Street\",\n\t\t\"floor\": \"2nd\",\n\t\t\"area_id\": 1\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "VENDORS: update delivery areas",
+			"request": {
+				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/31/update_delivery_areas",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vendor\": {\n\t  \"id\": 31\n\t},\n\t\"delivery_area_ids\": [1, 2]\n}"
 				},
 				"description": ""
 			},

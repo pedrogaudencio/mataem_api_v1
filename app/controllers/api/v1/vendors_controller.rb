@@ -1,5 +1,5 @@
 class Api::V1::VendorsController < Api::V1::ApiController
-  before_action :set_vendor, only: [:show, :update, :destroy]
+  before_action :set_vendor, only: [:show, :update, :destroy, :update_delivery_areas]
 
   # GET /vendors
   def index
@@ -70,8 +70,12 @@ class Api::V1::VendorsController < Api::V1::ApiController
 
     if @vendor.save
       @vendor.update(cuisines: MenuItemCuisine.where(id: params[:cuisine_ids]),
-                     categories: MenuItemCategory.where(id: params[:category_ids]),
-                     delivery_areas: Area.where(id: params[:delivery_area_ids]))
+                     categories: MenuItemCategory.where(id: params[:category_ids]))
+      if params.key?(:delivery_area_ids)
+        params[:delivery_area_ids].each do |area_id|
+          VendorDeliveryArea.create(vendor_id: @vendor.id, area_id: area_id)
+        end
+      end
       render json: @vendor, status: :created, location: @api_v1_vendor
     else
       render json: @vendor.errors, status: :unprocessable_entity
@@ -81,13 +85,23 @@ class Api::V1::VendorsController < Api::V1::ApiController
   # PATCH/PUT /vendors/1
   def update
     if @vendor.update(vendor_params)
-      @vendor.update(cuisines: MenuItemCuisine.where(id: params[:cuisine_ids]),
-                     categories: MenuItemCategory.where(id: params[:category_ids]),
-                     delivery_areas: Area.where(id: params[:delivery_area_ids]))
       render json: @vendor
     else
       render json: @vendor.errors, status: :unprocessable_entity
     end
+  end
+
+  def update_delivery_areas
+    if params.key?(:delivery_area_ids)
+      VendorDeliveryArea.where(
+        vendor_id: @vendor.id,
+        area_id: params[:delivery_area_ids]).destroy
+      params[:delivery_area_ids].each do |area_id|
+        VendorDeliveryArea.create(vendor_id: @vendor.id, area_id: area_id)
+      end
+      render json: @vendor
+    end
+    render json: @vendor.errors, status: :unprocessable_entity
   end
 
   # DELETE /vendors/1
