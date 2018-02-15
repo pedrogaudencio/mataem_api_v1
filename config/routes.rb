@@ -54,6 +54,7 @@ Rails.application.routes.draw do
           end
         end
       end
+      get '/orders_admin', to: 'orders#index_admin'
       get '/menu_items', to: 'menu_items#index'
       resources :menu_item_cuisines
       resources :menu_item_categories

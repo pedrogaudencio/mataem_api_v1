@@ -2,8 +2,21 @@ class Api::V1::OrdersController < Api::V1::ApiController
   before_action :set_order, only: [:show, :update, :destroy]
 
   # api :GET, '/orders', "List all orders"
+  def index_admin
+    @orders = Order.all
+
+    render json: @orders
+  end
+
+  # api :GET, '/orders', "List all orders"
   def index
-    @orders = Order.where(vendor_id: order_params[:vendor_id])
+    # if @api_v1_current_user.admin?
+    #   @orders = Order.all
+    # else
+    #   @orders = Order.where(vendor_id: order_params[:vendor_id])
+    # end
+
+    @orders = Order.where(vendor_id: params[:vendor_id])
 
     render json: @orders
   end
@@ -56,17 +69,18 @@ class Api::V1::OrdersController < Api::V1::ApiController
   # POST /orders
   def create
     @order = Order.new(order_params)
-    # FIXME: uncomment this
-    # @order.profile = @api_v1_current_user.profile
-    # if not @order.mobile_number
-    #   @order.mobile_number = @api_v1_current_user.profile.mobile_number
-    # end
-    @order.profile = Profile.first
-    @order.mobile_number = Profile.first.mobile_number
+    if not @order.profile
+      @order.profile = Profile.find(order_params[:profile_id]) or @api_v1_current_user.profile
+    end
+    if not @order.mobile_number
+      @order.mobile_number = @order.profile.mobile_number
+    end
+    if not @order.delivery_address
+      @order.delivery_address = @api_v1_current_user.profile.address
+    end
 
     if @order.save
       params[:order_items_attributes].each do |order_item|
-        puts order_item.inspect
         OrderItem.create(
           order: @order,
           quantity: order_item[:quantity],
@@ -102,7 +116,7 @@ class Api::V1::OrdersController < Api::V1::ApiController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:profile,
+      params.require(:order).permit(:profile_id,
                                     :mobile_number,
                                     :area_id,
                                     :vendor_id,

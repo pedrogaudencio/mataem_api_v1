@@ -22,9 +22,7 @@ class Api::V1::OrderAssignmentsController < Api::V1::ApiController
   end
 
   def accept_assignment
-    # FIXME: remove this and uncomment
-    current_user = User.last
-    # current_user = @api_v1_current_user
+    current_user = User.find(order_assignment_params[:user_id]) or @api_v1_current_user
     if @order_assignment.pending? and @order_assignment.update(user: current_user,
                                                                status: 1)
       render json: @order_assignment

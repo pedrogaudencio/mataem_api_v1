@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
 
+  accepts_nested_attributes_for :profile
+
   # full name or email
   delegate :full_name, to: :profile
 

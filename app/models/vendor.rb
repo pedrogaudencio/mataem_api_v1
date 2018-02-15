@@ -13,6 +13,8 @@ class Vendor < ApplicationRecord
   has_many :orders
   has_many :reviews
 
+  serialize :cuisines
+
   validates_presence_of :name, :address, :restaurant, :delivery_time
 
   translates :name, fallbacks_for_empty_translations: true
@@ -29,6 +31,10 @@ class Vendor < ApplicationRecord
   scope :delivers_in, -> (area) {
     Area.where(name: area).first.vendors
   }
+
+  def active_model_serializer
+    VendorSerializer
+  end
 
   def delivers_in?(area)
     !!self.where(delivery_areas: :area)
