@@ -702,7 +702,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"user_id\": 1,\n  \"name\": \"John Doe\",\n  \"email\": \"jonh.doe@gmail.com\",\n  \"mobile_number\": \"123 456 789\",\n  \"subject\": \"I'd like to know some stuff.\"\n}"
+					"raw": "{\n\t\"enquiry\": {\n\t\t\"name\": \"John Doe\",\n\t\t\"email\": \"test6@test.com\",\n\t\t\"mobile_number\": \"123 456 789\",\n\t\t\"subject\": \"I'd like to know some stuff.\"\t\n\t}\n}"
 				},
 				"description": ""
 			},
@@ -1426,6 +1426,86 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"email\": \"test6@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\",\n\t\"role\": 2,\n\t\"profile_attributes\": {\n\t\t\"first_name\": \"test_first\",\n\t\t\"last_name\": \"test_last\",\n\t\t\"mobile_number\": \"12345678910\",\n\t\t\"address_id\": 1,\n\t\t\"restaurant_id\": 1\n\t}\n\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER: accept order for specific vendor",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"order\": {\n\t\t\"order_id\": 15,\n\t\t\"status\": 1\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER: reject order for specific vendor",
+			"request": {
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"order\": {\n\t\t\"order_id\": 15,\n\t\t\"status\": 2\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PROFILE: update profile address",
+			"request": {
+				"url": "http://localhost:3000/api/v1/profiles/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address_id\": 2\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PROFILE: create address for profile",
+			"request": {
+				"url": "http://localhost:3000/api/v1/addresses",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": {\n\t\t\"profile_id\": 3,\n\t\t\"address_type\": \"apartment\",\n\t\t\"building\": \"Building\",\n\t\t\"number\": \"1\",\n\t\t\"street\": \"Street\",\n\t\t\"floor\": \"2nd\",\n\t\t\"area_id\": 1\n\t}\n}"
 				},
 				"description": ""
 			},

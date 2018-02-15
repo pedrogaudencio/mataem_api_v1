@@ -55,6 +55,6 @@ class Api::V1::AddressesController < Api::V1::ApiController
 
     # Only allow a trusted parameter "white list" through.
     def address_params
-      params.require(:address).permit(:address_type, :building, :number, :street, :floor, :area_id)
+      params.require(:address).permit(:address_type, :building, :number, :street, :floor, :area_id, :profile_id)
     end
 end

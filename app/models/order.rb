@@ -59,7 +59,6 @@ class Order < ApplicationRecord
   private
     def update_replied_at
       self.replied_at = Time.now
-      self.save!
     end
 
     def set_profile
