@@ -2,7 +2,7 @@ ONESIGNAL_API_KEY: "YOUR_API_KEY_HERE"
 ONESIGNAL_USER_AUTH_KEY: "YOUR_USER_AUTH_KEY_HERE"
 
 aws_s3_region: "ap-southeast-1"
-aws_s3_host_name: "s3-southeast-1.amazonaws.com"
+aws_s3_host_name: "s3-ap-southeast-1.amazonaws.com"
 aws_bucket: "mataem-assets"
 aws_access_key_id: "AKIAJRHXT4U2SXIGXTRA"
 aws_secret_access_key: "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"
