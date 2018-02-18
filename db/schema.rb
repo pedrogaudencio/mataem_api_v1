@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216095508) do
+ActiveRecord::Schema.define(version: 20180218173240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20180216095508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "profile_id"
+    t.string "latitude"
+    t.string "longitude"
     t.index ["area_id"], name: "index_addresses_on_area_id"
     t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
@@ -62,7 +64,12 @@ ActiveRecord::Schema.define(version: 20180216095508) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "size"
+    t.bigint "vendor_id"
+    t.date "start_date"
+    t.date "end_date"
     t.index ["restaurant_id"], name: "index_advertisements_on_restaurant_id"
+    t.index ["vendor_id"], name: "index_advertisements_on_vendor_id"
   end
 
   create_table "answer_translations", force: :cascade do |t|
@@ -306,6 +313,9 @@ ActiveRecord::Schema.define(version: 20180216095508) do
     t.float "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "payment_type", default: 0
+    t.string "description"
+    t.datetime "delivery_datetime"
     t.index ["area_id"], name: "index_orders_on_area_id"
     t.index ["profile_id"], name: "index_orders_on_profile_id"
     t.index ["vendor_id"], name: "index_orders_on_vendor_id"
@@ -324,6 +334,8 @@ ActiveRecord::Schema.define(version: 20180216095508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "restaurant_id"
+    t.integer "gender"
+    t.date "date_of_birth"
     t.index ["address_id"], name: "index_profiles_on_address_id"
     t.index ["restaurant_id"], name: "index_profiles_on_restaurant_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
@@ -379,6 +391,9 @@ ActiveRecord::Schema.define(version: 20180216095508) do
     t.string "bg_image_content_type"
     t.integer "bg_image_file_size"
     t.datetime "bg_image_updated_at"
+    t.integer "restaurant_type", default: 0
+    t.integer "payment_type", default: 0
+    t.string "description"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -495,6 +510,7 @@ ActiveRecord::Schema.define(version: 20180216095508) do
 
   add_foreign_key "addresses", "areas"
   add_foreign_key "addresses", "profiles"
+  add_foreign_key "advertisements", "vendors"
   add_foreign_key "answers", "questions"
   add_foreign_key "areas", "cities"
   add_foreign_key "enquiries", "users"

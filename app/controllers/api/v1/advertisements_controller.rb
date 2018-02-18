@@ -58,7 +58,11 @@ class Api::V1::AdvertisementsController < Api::V1::ApiController
     def advertisement_params
       params.require(:advertisement).permit(:title,
                                             :restaurant_id,
+                                            :vendor_id,
                                             :image,
+                                            :size,
+                                            :start_date,
+                                            :end_date,
                                             :total_clicks)
     end
 end

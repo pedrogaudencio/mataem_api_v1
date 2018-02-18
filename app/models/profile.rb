@@ -8,6 +8,7 @@ class Profile < ApplicationRecord
   default_scope { :active }
 
   enum status: { active: 0, inactive: 1, blocked: 2 }
+  enum gender: { female: 0, male: 1 }
 
   validates_presence_of :user #, :first_name, :last_name, :mobile_number
   validates :loyalty_points, :numericality => { :greater_than_or_equal_to => 0 }

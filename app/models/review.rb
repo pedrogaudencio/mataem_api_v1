@@ -5,7 +5,7 @@ class Review < ApplicationRecord
   belongs_to :user
 
   before_validation do
-    self.user = @api_v1_current_user
+    self.user ||= @api_v1_current_user
   end
 
   validates_presence_of :user, :status, :rating, :comment, :order_packaging, :value_for_money, :delivery_time, :food_quality

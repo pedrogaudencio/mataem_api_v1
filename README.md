@@ -40,4 +40,39 @@ API Endpoint
 - [ ] `item_choice_variants:[1,2,3]` this field doesnt affect get result `/orders`
 - [ ] for item choices some are single aelect some are multi select so expect a field for it in item_choice (eg :https://www.talabat.com/qatar/restaurant/16326/pizza-hut--barwa-village check pizza)
 - [ ] delete `/profiles/1` 500 internal server error (edited)
-- [ ] write seed examples for everything
+
+## Feature updates
+
+1. Superuser
+
+- [x] restaurant restaurant_type {veg, non-veg, both}
+- [x] restaurant payment_type {cod, online, both}
+- [x] restaurant add description field
+- [x] address add latitude, longitude fields
+- [x] profile gender field {male, female}
+- [x] profile date of birth
+- [x] {large banner, small banner} option in advertisement, add vendor_id column
+- [x] get all restaurants, send user owner data details together
+- [ ] get total amount for user (joining all orders)
+
+2. Customer
+
+- [x] include image_url in order items
+- [x] include profile in order assignments
+- [x] include area details in address
+- [x] order payment_type {cod, online}
+- [x] order description
+- [x] featured restaurants endpoint
+- [x] advertisement start_date, end_date
+- [x] order delivery_datetime
+- [x] send user_id in review
+- [ ] get coupon value + valid + restaurant_id (if any) by code
+- [ ] include coupon code in order and ignore if restaurant_id from coupon is not ==
+- [ ] list options to include in post requests (like active/inactive instead of 0/1), waiting for list
+
+3. Later
+
+- [ ] mailchimp emails
+- [ ] redeem cookies/loyalty points
+- [ ] several working hours per day
+- [ ] crop images automatically

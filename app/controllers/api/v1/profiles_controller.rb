@@ -20,6 +20,10 @@ class Api::V1::ProfilesController < Api::V1::ApiController
       @profile.address = Address.find(profile_params[:address_id])
     end
 
+    if profile_params.key?(:date_of_birth)
+      @profile.date_of_birth = Date.parse(profile_params[:date_of_birth])
+    end
+
     if @profile.update(profile_params)
       @profile.send_sms_code
       render json: @profile, status: :created, location: @api_v1_profile
@@ -33,6 +37,10 @@ class Api::V1::ProfilesController < Api::V1::ApiController
   def update
     if profile_params.key?(:address_id)
       @profile.address = Address.find(profile_params[:address_id])
+    end
+
+    if profile_params.key?(:date_of_birth)
+      @profile.date_of_birth = Date.parse(profile_params[:date_of_birth])
     end
 
     if @profile.update(profile_params)
@@ -116,6 +124,8 @@ class Api::V1::ProfilesController < Api::V1::ApiController
                                       :mobile_verification_code,
                                       :address_id,
                                       :status,
+                                      :gender,
+                                      :date_of_birth,
                                       :loyalty_points,
                                       :user_id,
                                       :first_name,

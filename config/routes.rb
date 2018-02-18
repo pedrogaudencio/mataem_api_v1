@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resources :areas
       resources :cities
       resources :restaurants do
+        get :get_featured, on: :collection
         resources :social_media, on: :member
         resources :vendors, on: :member do
           put :update_delivery_areas

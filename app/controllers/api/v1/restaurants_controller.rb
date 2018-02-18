@@ -13,6 +13,12 @@ class Api::V1::RestaurantsController < Api::V1::ApiController
     render json: @restaurant
   end
 
+  def get_featured
+    @restaurants = Restaurant.where(featured: true)
+
+    render json: @restaurants
+  end
+
   # POST /restaurants
   def create
     @restaurant = Restaurant.new(restaurant_params)
@@ -51,6 +57,9 @@ class Api::V1::RestaurantsController < Api::V1::ApiController
     def restaurant_params
       params.require(:restaurant).permit(:name,
                                          :status,
+                                         :restaurant_type,
+                                         :payment_type,
+                                         :description,
                                          :featured,
                                          :sort_order,
                                          :logo,

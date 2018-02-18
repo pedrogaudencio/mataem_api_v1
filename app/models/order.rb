@@ -6,6 +6,7 @@ class Order < ApplicationRecord
                           delivered: 3,
                           closed: 4 }
   enum delivery_type: { delivery: 0, pickup: 1 }
+  enum payment_type: { cod: 0, online: 1 }
 
   belongs_to :profile, optional: true
   belongs_to :area

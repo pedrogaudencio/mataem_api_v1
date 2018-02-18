@@ -79,6 +79,12 @@ class Api::V1::OrdersController < Api::V1::ApiController
       @order.delivery_address = @api_v1_current_user.profile.address
     end
 
+    if not @order.delivery_datetime
+      @order.delivery_datetime = Time.now
+    else
+      @order.delivery_datetime = Time.parse(order_params[:delivery_datetime])
+    end
+
     if @order.save
       params[:order_items_attributes].each do |order_item|
         OrderItem.create(
@@ -122,12 +128,15 @@ class Api::V1::OrdersController < Api::V1::ApiController
                                     :vendor_id,
                                     :status,
                                     :delivery_type,
+                                    :description,
+                                    :delivery_datetime,
                                     :finishing_time,
                                     :delivery_charges,
                                     :service_fee,
                                     :order_source,
                                     :progress_status,
                                     :delivery_address,
+                                    :payment_type,
                                     order_items_attributes: [
                                       :quantity,
                                       :menu_item_id,
