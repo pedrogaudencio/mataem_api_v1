@@ -1,5 +1,4 @@
 {
-	"variables": [],
 	"info": {
 		"name": "Mataem API v1",
 		"_postman_id": "de90ea26-e9d1-2dc6-f7e7-82d5a1b2c9f4",
@@ -10,10 +9,10 @@
 		{
 			"name": "USERS: get users",
 			"request": {
-				"url": "",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "",
 				"description": ""
 			},
 			"response": []
@@ -21,19 +20,18 @@
 		{
 			"name": "QUESTION: create",
 			"request": {
-				"url": "http://localhost:3000/api/v1/questions/2/answers",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/questions/2/answers",
 				"description": ""
 			},
 			"response": []
@@ -41,19 +39,18 @@
 		{
 			"name": "QUESTION: answer",
 			"request": {
-				"url": "http://localhost:3000/api/v1/questions/1/answers",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 1,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/questions/1/answers",
 				"description": ""
 			},
 			"response": []
@@ -61,10 +58,10 @@
 		{
 			"name": "VENDORS: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors",
 				"description": ""
 			},
 			"response": []
@@ -72,10 +69,10 @@
 		{
 			"name": "VENDORS: get 1",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1",
 				"description": ""
 			},
 			"response": []
@@ -83,10 +80,10 @@
 		{
 			"name": "MENU ITEMS: get menu items for specific vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items",
 				"description": ""
 			},
 			"response": []
@@ -94,10 +91,10 @@
 		{
 			"name": "MENU ITEMS: get a menu item for a specific vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1",
 				"description": ""
 			},
 			"response": []
@@ -105,10 +102,10 @@
 		{
 			"name": "ITEM CHOICES: get the item choices for a menu item",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices",
 				"description": ""
 			},
 			"response": []
@@ -116,10 +113,10 @@
 		{
 			"name": "ITEM CHOICES: get an item choice for a menu item",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1",
 				"description": ""
 			},
 			"response": []
@@ -127,10 +124,10 @@
 		{
 			"name": "VARIANTS: get the variants for an item choice",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1/item_choice_variants",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1/item_choice_variants",
 				"description": ""
 			},
 			"response": []
@@ -138,10 +135,10 @@
 		{
 			"name": "VARIANTS: get a variant for an item choice",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1/item_choice_variants/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1/item_choice_variants/1",
 				"description": ""
 			},
 			"response": []
@@ -149,10 +146,10 @@
 		{
 			"name": "CUISINES: get the cuisines of a menu item",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/menu_item_cuisines",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/menu_item_cuisines",
 				"description": ""
 			},
 			"response": []
@@ -160,10 +157,10 @@
 		{
 			"name": "CUISINES: get a cuisine of a menu item",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/menu_item_cuisines/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/menu_item_cuisines/1",
 				"description": ""
 			},
 			"response": []
@@ -171,19 +168,18 @@
 		{
 			"name": "ENQUIRIES: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/enquiries",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/enquiries",
 				"description": ""
 			},
 			"response": []
@@ -191,19 +187,18 @@
 		{
 			"name": "ENQUIRIES: get one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/enquiries/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/enquiries/1",
 				"description": ""
 			},
 			"response": []
@@ -211,19 +206,18 @@
 		{
 			"name": "REVIEWS: get one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/reviews/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/reviews/1",
 				"description": ""
 			},
 			"response": []
@@ -231,19 +225,18 @@
 		{
 			"name": "REVIEWS: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/reviews",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/reviews",
 				"description": ""
 			},
 			"response": []
@@ -251,19 +244,18 @@
 		{
 			"name": "PROFILES: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/profiles",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/profiles",
 				"description": ""
 			},
 			"response": []
@@ -271,19 +263,18 @@
 		{
 			"name": "PROFILES: get one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/profiles/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/profiles/1",
 				"description": ""
 			},
 			"response": []
@@ -291,19 +282,18 @@
 		{
 			"name": "ADDRESSES: get one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/addresses/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/addresses/1",
 				"description": ""
 			},
 			"response": []
@@ -311,19 +301,18 @@
 		{
 			"name": "ADDRESSES: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/addresses",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/addresses",
 				"description": ""
 			},
 			"response": []
@@ -331,19 +320,18 @@
 		{
 			"name": "AREAS: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/areas",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/areas",
 				"description": ""
 			},
 			"response": []
@@ -351,19 +339,18 @@
 		{
 			"name": "AREAS: get one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/areas/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/areas/1",
 				"description": ""
 			},
 			"response": []
@@ -371,19 +358,18 @@
 		{
 			"name": "CITIES: get one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/cities/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/cities/1",
 				"description": ""
 			},
 			"response": []
@@ -391,19 +377,18 @@
 		{
 			"name": "CITIES: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/cities",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/cities",
 				"description": ""
 			},
 			"response": []
@@ -411,19 +396,18 @@
 		{
 			"name": "RESTAURANTS: get all",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants",
 				"description": ""
 			},
 			"response": []
@@ -431,19 +415,18 @@
 		{
 			"name": "RESTAURANTS: get one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1",
 				"description": ""
 			},
 			"response": []
@@ -451,19 +434,18 @@
 		{
 			"name": "RESTAURANTS: get all vendors for that restaurant",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/vendors",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1/vendors",
 				"description": ""
 			},
 			"response": []
@@ -471,19 +453,18 @@
 		{
 			"name": "RESTAURANTS: get one vendor for that restaurant",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/1",
 				"description": ""
 			},
 			"response": []
@@ -491,19 +472,18 @@
 		{
 			"name": "SOCIAL MEDIA: get social media that restaurant",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/social_media",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1/social_media",
 				"description": ""
 			},
 			"response": []
@@ -511,19 +491,18 @@
 		{
 			"name": "REVIEWS: get all reviews for that vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/reviews",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/vendors/1/reviews",
 				"description": ""
 			},
 			"response": []
@@ -531,19 +510,18 @@
 		{
 			"name": "ORDER: get all orders for that vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/vendors/1/orders",
 				"description": ""
 			},
 			"response": []
@@ -551,19 +529,18 @@
 		{
 			"name": "ADDRESSES: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/addresses",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"address\": {\n\t\t\"address_type\": \"apartment\",\n\t\t\"building\": \"Building\",\n\t\t\"number\": \"1\",\n\t\t\"street\": \"Street\",\n\t\t\"floor\": \"2nd\",\n\t\t\"area_id\": 1\n\t}\n}"
+					"raw": "{\n  \"address\": {\n    \"address_type\": \"apartment\",\n    \"building\": \"Building\",\n    \"number\": \"1\",\n    \"street\": \"Street\",\n    \"floor\": \"2nd\",\n    \"area_id\": 1\n  }\n}"
 				},
+				"url": "http://localhost:3000/api/v1/addresses",
 				"description": ""
 			},
 			"response": []
@@ -571,19 +548,18 @@
 		{
 			"name": "AREAS: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/areas",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"name\": \"Area 2\",\n  \"city_id\": 1,\n  \"latitude\": \"12341234567890\",\n  \"longitude\": \"12341234567890\",\n  \"status\": \"active\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/areas",
 				"description": ""
 			},
 			"response": []
@@ -591,19 +567,18 @@
 		{
 			"name": "SOCIAL MEDIA: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/social_media",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"restaurant_id\": 1,\n  \"facebook_url\": \"https://facebook.com/1234567890\",\n  \"twitter_url\": \"https://twitter.com/1234567890\",\n  \"google_plus_url\": \"https://plus.google.com/1234567890\",\n  \"linkedin_url\": \"https://linkedin.com/1234567890\",\n  \"facebook_app_id\": \"1234567890\",\n  \"facebook_secret_key\": \"1234567890\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1/social_media",
 				"description": ""
 			},
 			"response": []
@@ -611,19 +586,18 @@
 		{
 			"name": "SOCIAL MEDIA: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/social_media",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"restaurant_id\": 1,\n  \"facebook_url\": \"https://facebook.com/1234567890\",\n  \"twitter_url\": \"https://twitter.com/1234567890\",\n  \"google_plus_url\": \"https://plus.google.com/1234567890\",\n  \"linkedin_url\": \"https://linkedin.com/1234567890\",\n  \"facebook_app_id\": \"1234567890\",\n  \"facebook_secret_key\": \"1234567890\"\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1/social_media",
 				"description": ""
 			},
 			"response": []
@@ -631,19 +605,18 @@
 		{
 			"name": "RESTAURANTS: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"restaurant\": {\n\t  \"name\": \"Burger King\",\n\t  \"status\": \"active\",\n\t  \"opening_hours\": \"11:00\",\n\t  \"closing_hours\": \"23:30\",\n\t  \"featured\": false\n\t},\n\t\"weekdays\": [1, 2, 3, 4, 5]\n}\n"
+					"raw": "{\n  \"restaurant\": {\n    \"name\": \"Burger King\",\n    \"status\": \"active\",\n    \"opening_hours\": \"11:00\",\n    \"closing_hours\": \"23:30\",\n    \"featured\": false,\n    \"restaurant_type\": \"veg_both\",\n    \"payment_type\": \"payment_both\"\n  },\n  \"weekdays\": [1, 2, 3, 4, 5]\n}\n"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/",
 				"description": ""
 			},
 			"response": []
@@ -651,19 +624,18 @@
 		{
 			"name": "VENDORS: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"vendor\": {\n\t  \"name\": \"Burger King\",\n\t  \"address_id\": 1,\n\t  \"restaurant_id\": 1,\n\t  \"preorder\": true,\n\t  \"pickup\": true,\n\t  \"delivery_fee\": 5,\n\t  \"delivery_time\": 30\n\t},\n\t\"delivery_area_ids\": [1, 2]\n}"
+					"raw": "{\n  \"vendor\": {\n    \"name\": \"Burger King\",\n    \"address_id\": 1,\n    \"restaurant_id\": 1,\n    \"preorder\": true,\n    \"pickup\": true,\n    \"delivery_fee\": 5,\n    \"delivery_time\": 30\n  },\n  \"delivery_area_ids\": [1, 2]\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/",
 				"description": ""
 			},
 			"response": []
@@ -671,19 +643,18 @@
 		{
 			"name": "REVIEWS: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/reviews",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"vendor_id\": 1,\n  \"rating\": 4,\n  \"comment\": \"Food was good.\",\n  \"order_packaging\": 3,\n  \"value_for_money\": 5,\n  \"delivery_time\": 4,\n  \"food_quality\": 4\n}\n"
+					"raw": "{\n\t\"review\": {\n\t\t\"user_id\": 1,\n\t\t\"vendor_id\": 1,\n\t\t\"rating\": 4,\n\t\t\"comment\": \"Food was good.\",\n\t\t\"order_packaging\": 3,\n\t\t\"value_for_money\": 5,\n\t\t\"delivery_time\": 4,\n\t\t\"food_quality\": 4\n\t}\n}\n"
 				},
+				"url": "http://localhost:3000/api/v1/vendors/1/reviews",
 				"description": ""
 			},
 			"response": []
@@ -691,19 +662,18 @@
 		{
 			"name": "ENQUIRIES: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/enquiries",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"enquiry\": {\n\t\t\"name\": \"John Doe\",\n\t\t\"email\": \"test6@test.com\",\n\t\t\"mobile_number\": \"123 456 789\",\n\t\t\"subject\": \"I'd like to know some stuff.\"\t\n\t}\n}"
+					"raw": "{\n  \"enquiry\": {\n    \"name\": \"John Doe\",\n    \"email\": \"test6@test.com\",\n    \"mobile_number\": \"123 456 789\",\n    \"subject\": \"I'd like to know some stuff.\"  \n  }\n}"
 				},
+				"url": "http://localhost:3000/api/v1/enquiries",
 				"description": ""
 			},
 			"response": []
@@ -711,6 +681,17 @@
 		{
 			"name": "CUISINE: get all vendors with that cuisine",
 			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Fancy\"\n}"
+				},
 				"url": {
 					"raw": "http://localhost:3000/api/v1/vendors/get_cuisine?cuisine=American",
 					"protocol": "http",
@@ -728,31 +709,20 @@
 						{
 							"key": "cuisine",
 							"value": "American",
-							"equals": true,
-							"description": ""
+							"equals": true
 						}
-					],
-					"variable": []
+					]
 				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Fancy\"\n}"
-				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "CATEGORY: get all vendors with that category",
 			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/api/v1/vendors/get_category?category=Promotion",
 					"protocol": "http",
@@ -770,44 +740,42 @@
 						{
 							"key": "category",
 							"value": "Promotion",
-							"equals": true,
-							"description": ""
+							"equals": true
 						}
-					],
-					"variable": []
+					]
 				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "VENDORS get recently opened (less than 1 month ago)",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/just_opened",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/just_opened",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "VENDORS get the ones with free delivery",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/free_delivery",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/free_delivery",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "VENDORS get the ones that deliver in specific area",
 			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/api/v1/vendors/delivers_in?area=Area",
 					"protocol": "http",
@@ -825,497 +793,464 @@
 						{
 							"key": "area",
 							"value": "Area",
-							"equals": true,
-							"description": ""
+							"equals": true
 						}
-					],
-					"variable": []
+					]
 				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "CUISINE: create new cuisine",
 			"request": {
-				"url": "http://localhost:3000/api/v1/menu_item_cuisines",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"menu_item_cuisine\": {\n\t\t\"name\": \"Fancy\"\n\t}\n}"
+					"raw": "{\n  \"menu_item_cuisine\": {\n    \"name\": \"Fancy\"\n  }\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/menu_item_cuisines",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "CUISINE: create new category",
 			"request": {
-				"url": "http://localhost:3000/api/v1/menu_item_categories",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Promotion\"\n}"
+					"raw": "{\n  \"name\": \"Promotion\"\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/menu_item_categories",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "CITIES: create one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/cities/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"name\": \"City\"\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/cities/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "MENU ITEMS: create menu item for specific vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"menu_item\": {\n\t\t\"name\": \"Name\",\n\t\t\"description\": \"Description\",\n\t\t\"ingredients\": \"Ingredients\",\n\t\t\"price\": 20,\n\t\t\"menu_item_category_id\": 1,\n\t\t\"menu_item_cuisine_id\": 1,\n\t\t\"vendor_id\": 1\n\t\t}\n}"
+					"raw": "{\n  \"menu_item\": {\n    \"name\": \"Name\",\n    \"description\": \"Description\",\n    \"ingredients\": \"Ingredients\",\n    \"price\": 20,\n    \"menu_item_category_id\": 1,\n    \"menu_item_cuisine_id\": 1,\n    \"vendor_id\": 1\n    }\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items",
+				"description": null
 			},
 			"response": []
 		},
 		{
-			"name": "ORDER: create order for specific vendor",
+			"name": "http://localhost:3000/api/v1/vendors/2/orders/",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/2/orders/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
+				"method": "GET",
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"order\": {\n\t  \"profile_id\": 1,\n\t  \"delivery_address\": \"Address to deliver\",\n\t  \"area_id\": 1,\n\t  \"vendor_id\": 2,\n\t  \"delivery_type\": 0,\n\t  \"order_source\": \"postman\"\n\t},\n\t\"order_items_attributes\": [\n\t\t{\n\t\t  \"quantity\": 1,\n\t\t  \"menu_item_id\": 1,\n\t\t  \"item_choice_variants\": [1]\n\t\t},\n\t\t{\n\t\t  \"quantity\": 2,\n\t\t  \"menu_item_id\": 2,\n\t\t  \"item_choice_variants\": [1, 2]\n\t\t},\n\t\t{\n\t\t  \"quantity\": 1,\n\t\t  \"menu_item_id\": 3,\n\t\t  \"item_choice_variants\": [1, 2]\n\t\t}\n\t]\n}"
+					"raw": "{\n  \"order\": {\n    \"profile_id\": 1,\n    \"delivery_address\": \"Address to deliver\",\n    \"area_id\": 1,\n    \"vendor_id\": 2,\n    \"delivery_type\": 0,\n    \"order_source\": \"postman\"\n  },\n  \"order_items_attributes\": [\n    {\n      \"quantity\": 1,\n      \"menu_item_id\": 1,\n      \"item_choice_variants\": [1]\n    },\n    {\n      \"quantity\": 2,\n      \"menu_item_id\": 2,\n      \"item_choice_variants\": [1, 2]\n    },\n    {\n      \"quantity\": 1,\n      \"menu_item_id\": 3,\n      \"item_choice_variants\": [1, 2]\n    }\n  ]\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/2/orders/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ITEM CHOICES: create item choice for a specific menu item",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"menu_item_id\": 1,\n\t\"name\": \"Item choice 1\",\n\t\"price\": 22,\n\t\"max_variants\": 3\n}\n"
+					"raw": "{\n  \"menu_item_id\": 1,\n  \"name\": \"Item choice 1\",\n  \"price\": 22,\n  \"max_variants\": 3\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ITEM CHOICE VARIANT: create variant for that item choice",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1/item_choice_variants",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"item_choice_id\": 1,\n\t\"name\": \"Name 1\"\n}"
+					"raw": "{\n  \"item_choice_id\": 1,\n  \"name\": \"Name 1\"\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items/1/item_choices/1/item_choice_variants",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER: get specific order for specific vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT: create order assignment for specific order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders/21/order_assignments",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"order_id\": 21,\n\t\"assignee_id\": 3\n}\n"
+					"raw": "{\n  \"order_id\": 21,\n  \"assignee_id\": 3\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/21/order_assignments",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT: accept order assignment for specific order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders/21/order_assignments/1/accept_assignment",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"order_id\": 21,\n\t\"assignee_id\": 3\n}\n"
+					"raw": "{\n  \"order_id\": 21,\n  \"assignee_id\": 3\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/21/order_assignments/1/accept_assignment",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT: list pending order assignments for specific vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/list_pending_order_assignments",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"assignee_id\": 3\n}\n"
+					"raw": "{\n  \"assignee_id\": 3\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/list_pending_order_assignments",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT ISSUE: create order assignment issue for specific order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT ISSUE: get order assignment issues for specific order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT ISSUE: get specific order assignment issue for specific order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues/1",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "USERS: Sign in user",
 			"request": {
-				"url": "http://localhost:3000/api/v1/auth/sign_in",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"pmgaudencio@gmail.com\", \"password\": \"qwertyuiop\"\n}"
+					"raw": "{\n  \"email\": \"pmgaudencio@gmail.com\", \"password\": \"qwertyuiop\"\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/auth/sign_in",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "USERS: Register new user",
 			"request": {
-				"url": "http://localhost:3000/api/v1/auth/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"test1@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\"\n}\n"
+					"raw": "{\n  \"email\": \"test1@test.com\",\n  \"password\": \"qwertyuiop\",\n  \"password_confirmation\": \"qwertyuiop\"\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/auth/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "PROFILE: create new profile 1",
 			"request": {
-				"url": "http://localhost:3000/api/v1/profiles",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"user_id\": 1,\n\t\"first_name\": \"test_first\",\n\t\"last_name\": \"test_last\",\n\t\"mobile_number\": \"123456789\",\n\t\"address_id\": 1\n}\n"
+					"raw": "{\n  \"user_id\": 1,\n  \"first_name\": \"test_first\",\n  \"last_name\": \"test_last\",\n  \"mobile_number\": \"123456789\",\n  \"address_id\": 1\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/profiles",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "COUPONS: create new coupon",
 			"request": {
-				"url": "http://localhost:3000/api/v1/coupons",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"value\": 10.0\n}\n"
+					"raw": "{\n  \"value\": 10.0\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/coupons",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "COUPONS: add coupon to order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/coupons/1",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"coupon_id\": 1,\n\t\"order_id\": 1\n}"
+					"raw": "{\n  \"coupon_id\": 1,\n  \"order_id\": 1\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/coupons/1",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ADS: create new ad",
 			"request": {
-				"url": "http://localhost:3000/api/v1/advertisements/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"restaurant_id\": 1,\n\t\"title\": \"Ad Example\"\n}\n"
+					"raw": "{\n\t\"advertisement\": {\n\t  \"restaurant_id\": 1,\n\t  \"vendor_id\": 1,\n\t  \"title\": \"Ad Example\",\n\t  \"size\": \"large\",\n\t  \"start_date\": \"2018-02-18\",\n\t  \"end_date\": \"2018-02-28\"\n\t}\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/advertisements/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ADS: add click",
 			"request": {
-				"url": "http://localhost:3000/api/v1/advertisements/1/click",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"advertisement_id\": 1\n}\n"
+					"raw": "{\n  \"advertisement_id\": 1\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/advertisements/1/click",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ADS: get ad",
 			"request": {
-				"url": "http://localhost:3000/api/v1/advertisements/1/",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"advertisement_id\": 1\n}\n"
+					"raw": "{\n  \"advertisement_id\": 1\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/advertisements/1/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT: get order assignments for specific order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders/1/order_assignments",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"assignee_id\": 3\n}\n"
+					"raw": "{\n  \"assignee_id\": 3\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1/order_assignments",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER ASSIGNMENT ISSUE: get order assignment issues for specific order",
 			"request": {
-				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues/",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"order_id\": 1,\n  \"comment\": \"This has gone wrong.\"\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/orders/1/order_assignment_issues/",
+				"description": null
 			},
 			"response": []
 		},
 		{
-			"name": "ORDERS: create one",
+			"name": "ORDERS: delete one",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
 				"method": "DELETE",
 				"header": [],
 				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
 				"description": null
 			},
 			"response": []
@@ -1323,210 +1258,269 @@
 		{
 			"name": "ORDER: get all orders for all vendors",
 			"request": {
-				"url": "http://localhost:3000/api/v1/orders_admin",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/orders_admin",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "USERS: Register delivery boy",
 			"request": {
-				"url": "http://localhost:3000/api/v1/auth/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"test3@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\",\n\t\"role\": 1\n}\n"
+					"raw": "{\n  \"email\": \"test3@test.com\",\n  \"password\": \"qwertyuiop\",\n  \"password_confirmation\": \"qwertyuiop\",\n  \"role\": 1\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/auth/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "USERS: Register restaurant admin",
 			"request": {
-				"url": "http://localhost:3000/api/v1/auth/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"test4@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\",\n\t\"role\": 2\n}\n"
+					"raw": "{\n  \"email\": \"test4@test.com\",\n  \"password\": \"qwertyuiop\",\n  \"password_confirmation\": \"qwertyuiop\",\n  \"role\": 2\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/auth/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "USERS: Register super admin",
 			"request": {
-				"url": "http://localhost:3000/api/v1/auth/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"admin@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\",\n\t\"role\": 3\n}\n"
+					"raw": "{\n  \"email\": \"admin@test.com\",\n  \"password\": \"qwertyuiop\",\n  \"password_confirmation\": \"qwertyuiop\",\n  \"role\": 3\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/auth/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "USERS: Register user with profile",
 			"request": {
-				"url": "http://localhost:3000/api/v1/auth/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"test6@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\",\n\t\"role\": 0,\n\t\"profile_attributes\": {\n\t\t\"first_name\": \"test_first\",\n\t\t\"last_name\": \"test_last\",\n\t\t\"mobile_number\": \"12345678910\",\n\t\t\"address_id\": 1,\n\t}\n\n}\n"
+					"raw": "{\n  \"email\": \"test6@test.com\",\n  \"password\": \"qwertyuiop\",\n  \"password_confirmation\": \"qwertyuiop\",\n  \"role\": 0,\n  \"profile_attributes\": {\n    \"first_name\": \"test_first\",\n    \"last_name\": \"test_last\",\n    \"mobile_number\": \"12345678910\",\n    \"address_id\": 1,\n  }\n\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/auth/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "USERS: Register restaurant user with profile",
 			"request": {
-				"url": "http://localhost:3000/api/v1/auth/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"test6@test.com\",\n\t\"password\": \"qwertyuiop\",\n\t\"password_confirmation\": \"qwertyuiop\",\n\t\"role\": 2,\n\t\"profile_attributes\": {\n\t\t\"first_name\": \"test_first\",\n\t\t\"last_name\": \"test_last\",\n\t\t\"mobile_number\": \"12345678910\",\n\t\t\"address_id\": 1,\n\t\t\"restaurant_id\": 1\n\t}\n\n}\n"
+					"raw": "{\n  \"email\": \"test6@test.com\",\n  \"password\": \"qwertyuiop\",\n  \"password_confirmation\": \"qwertyuiop\",\n  \"role\": 2,\n  \"profile_attributes\": {\n    \"first_name\": \"test_first\",\n    \"last_name\": \"test_last\",\n    \"mobile_number\": \"12345678910\",\n    \"address_id\": 1,\n    \"restaurant_id\": 1,\n    \"date_of_birth\": \"1980-02-18\"\n  }\n\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/auth/",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER: accept order for specific vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"order\": {\n\t\t\"order_id\": 15,\n\t\t\"status\": 1\n\t}\n}"
+					"raw": "{\n  \"order\": {\n    \"order_id\": 15,\n    \"status\": 1\n  }\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "ORDER: reject order for specific vendor",
 			"request": {
-				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"order\": {\n\t\t\"order_id\": 15,\n\t\t\"status\": 2\n\t}\n}"
+					"raw": "{\n  \"order\": {\n    \"order_id\": 15,\n    \"status\": 2\n  }\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/vendors/1/orders/1",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "PROFILE: update profile address",
 			"request": {
-				"url": "http://localhost:3000/api/v1/profiles/1",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"address_id\": 2\n}\n"
+					"raw": "{\n  \"address_id\": 2\n}\n"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/profiles/1",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "PROFILE: create address for profile",
 			"request": {
-				"url": "http://localhost:3000/api/v1/addresses",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"address\": {\n\t\t\"profile_id\": 3,\n\t\t\"address_type\": \"apartment\",\n\t\t\"building\": \"Building\",\n\t\t\"number\": \"1\",\n\t\t\"street\": \"Street\",\n\t\t\"floor\": \"2nd\",\n\t\t\"area_id\": 1\n\t}\n}"
+					"raw": "{\n  \"address\": {\n    \"profile_id\": 3,\n    \"address_type\": \"apartment\",\n    \"building\": \"Building\",\n    \"number\": \"1\",\n    \"street\": \"Street\",\n    \"floor\": \"2nd\",\n    \"area_id\": 1\n  }\n}"
 				},
-				"description": ""
+				"url": "http://localhost:3000/api/v1/addresses",
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "VENDORS: update delivery areas",
 			"request": {
-				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/32/update_delivery_areas",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"delivery_area_ids\": [1, 2]\n}"
+					"raw": "{\n  \"delivery_area_ids\": [1, 2]\n}"
 				},
+				"url": "http://localhost:3000/api/v1/restaurants/1/vendors/32/update_delivery_areas",
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "RESTAURANTS: get featured",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:3000/api/v1/restaurants/get_featured",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "COUPONS: get coupon by code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"value\": 10.0\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/coupons/get_by_code?code=WBDMIHTYFO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"coupons",
+						"get_by_code"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "WBDMIHTYFO",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "COUPONS: create new coupon for specific restaurant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"value\": 10.0,\n  \"restaurant_id\": 1\n}\n"
+				},
+				"url": "http://localhost:3000/api/v1/coupons",
 				"description": ""
 			},
 			"response": []
