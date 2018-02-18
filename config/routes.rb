@@ -71,7 +71,9 @@ Rails.application.routes.draw do
       resources :orders, on: :member do
         resources :order_assignment_issues, on: :member
       end
-      resources :coupons
+      resources :coupons do
+        get :get_by_code, to: 'coupons#get_by_code', on: :collection
+      end
       resources :advertisements, on: :member do
         get 'click', to: 'advertisements#click', on: :member
       end

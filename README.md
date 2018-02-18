@@ -66,7 +66,7 @@ API Endpoint
 - [x] advertisement start_date, end_date
 - [x] order delivery_datetime
 - [x] send user_id in review
-- [ ] get coupon value + valid + restaurant_id (if any) by code
+- [x] get coupon value + valid + restaurant_id (if any) by code
 - [ ] include coupon code in order and ignore if restaurant_id from coupon is not ==
 - [ ] list options to include in post requests (like active/inactive instead of 0/1), waiting for list
 

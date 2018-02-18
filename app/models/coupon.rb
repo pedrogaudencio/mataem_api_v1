@@ -1,5 +1,6 @@
 class Coupon < ApplicationRecord
   belongs_to :order, optional: true
+  belongs_to :restaurant, optional: true
 
   enum discount_type: { amount_based: 0, percentage_based: 1 }
   enum app_type: { web: 0, mobile: 1, both_apps: 2 }

@@ -13,6 +13,12 @@ class Api::V1::CouponsController < Api::V1::ApiController
     render json: @coupon
   end
 
+  def get_by_code
+    @coupon = Coupon.where(code: params[:code]).first
+
+    render json: @coupon
+  end
+
   # POST /coupons
   def create
     @coupon = Coupon.new(coupon_params)
@@ -56,6 +62,7 @@ class Api::V1::CouponsController < Api::V1::ApiController
                                      :value,
                                      :expiry_date,
                                      :order_id,
+                                     :restaurant_id,
                                      :discount_type,
                                      :maximum_redeem_amount,
                                      :min_order_value,
