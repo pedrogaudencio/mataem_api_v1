@@ -54,6 +54,7 @@ class Api::V1::RestaurantsController < Api::V1::ApiController
                                          :featured,
                                          :sort_order,
                                          :logo,
+                                         :image_bg,
                                          :opening_hours,
                                          :closing_hours,
                                          :weekdays,

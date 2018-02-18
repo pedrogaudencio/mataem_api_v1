@@ -55,6 +55,7 @@ class Api::V1::MenuItemsController < Api::V1::ApiController
                                         :ingredients,
                                         :price,
                                         :vendor_id,
+                                        :image,
                                         :menu_item_category_id,
                                         :menu_item_cuisine_id)
     end
