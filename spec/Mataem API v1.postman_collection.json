@@ -878,20 +878,6 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:3000/api/v1/vendors/2/orders/",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"order\": {\n    \"profile_id\": 1,\n    \"delivery_address\": \"Address to deliver\",\n    \"area_id\": 1,\n    \"vendor_id\": 2,\n    \"delivery_type\": 0,\n    \"order_source\": \"postman\"\n  },\n  \"order_items_attributes\": [\n    {\n      \"quantity\": 1,\n      \"menu_item_id\": 1,\n      \"item_choice_variants\": [1]\n    },\n    {\n      \"quantity\": 2,\n      \"menu_item_id\": 2,\n      \"item_choice_variants\": [1, 2]\n    },\n    {\n      \"quantity\": 1,\n      \"menu_item_id\": 3,\n      \"item_choice_variants\": [1, 2]\n    }\n  ]\n}"
-				},
-				"url": "http://localhost:3000/api/v1/vendors/2/orders/",
-				"description": null
-			},
-			"response": []
-		},
-		{
 			"name": "ITEM CHOICES: create item choice for a specific menu item",
 			"request": {
 				"method": "POST",
@@ -1521,6 +1507,25 @@
 					"raw": "{\n  \"value\": 10.0,\n  \"restaurant_id\": 1\n}\n"
 				},
 				"url": "http://localhost:3000/api/v1/coupons",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDERS: create an order with coupon",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"order\" : {\n\t    \"profile_id\": 1,\n\t    \"vendor_id\": 1,\n\t    \"area_id\": 1,\n\t    \"delivery_type\": \"delivery\",\n\t    \"order_source\": \"web\",\n\t    \"payment_type\": \"cod\"\n\t},\n\t\"order_items\": [\n    \t{\n    \t\t\"menu_item_id\": 1,\n    \t\t\"quantity\": 2,\n    \t\t\"item_choice_variants\": [3]\n    \t},\n    \t{\n    \t\t\"menu_item_id\": 1,\n    \t\t\"quantity\": 2,\n    \t\t\"item_choice_variants\": [1]\n    \t},\n    \t{\n    \t\t\"menu_item_id\": 1,\n    \t\t\"quantity\": 2,\n    \t\t\"item_choice_variants\": [1]\n    \t}\n\t],\n\t\"coupon_id\": 3\n}"
+				},
+				"url": "http://localhost:3000/api/v1/vendors/1/orders",
 				"description": ""
 			},
 			"response": []

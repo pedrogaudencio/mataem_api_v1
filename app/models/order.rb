@@ -10,7 +10,6 @@ class Order < ApplicationRecord
 
   belongs_to :profile, optional: true
   belongs_to :area
-  belongs_to :restaurant, optional: true
   belongs_to :vendor
   has_many :order_items, dependent: :destroy
   has_one :order_assignment, dependent: :destroy
@@ -24,6 +23,8 @@ class Order < ApplicationRecord
 
   validates_presence_of :status, :progress_status, :delivery_type, :area, :vendor#, :mobile_number
 
+  delegate :restaurant, to: :vendor
+
   # TODO: validate mobile number if not present then profile.mobile_number else raise
   # 
 
@@ -33,11 +34,21 @@ class Order < ApplicationRecord
 
   def calculate_total
     t = self.order_items.sum(:price) + self.vendor.delivery_fee
-    if not self.coupon.nil?# and self.coupon.is_valid_from_order?
-      t -= self.coupon.value
-    end
-    t = 0 if t < 0
     self.update(total: t)
+    t
+  end
+
+  def apply_coupon
+    if not self.coupon.nil? and self.coupon_is_valid?
+      t = self.total
+      if self.coupon.amount_based?
+        t -= self.coupon.value
+      elsif self.coupon.percentage_based?
+        t -= t * self.coupon.value
+      end
+      t = 0 if t < 0
+      self.update(total: t)
+    end
   end
 
   def accept
@@ -55,6 +66,15 @@ class Order < ApplicationRecord
 
   def mark_delivered
     self.update(progress_status: :delivered)
+  end
+
+  def coupon_is_valid?
+    return (self.coupon.valid_not_used? and
+            self.coupon.valid_user_type? and
+            self.coupon.valid_app_type? and
+            self.coupon.valid_min_order_value? and
+            self.coupon.valid_expiry_date? and
+            self.coupon.valid_restaurant?)
   end
 
   private

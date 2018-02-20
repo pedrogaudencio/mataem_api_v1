@@ -54,6 +54,10 @@ API Endpoint
 - [x] {large banner, small banner} option in advertisement, add vendor_id column
 - [x] get all restaurants, send user owner data details together
 - [ ] get total amount for user (joining all orders)
+- [ ] restaurant enum payment_type: { payment_both: 0, cod: 1, online: 2 }
+- [ ] vendor busy bool field
+- [ ] vendor minimum_order_value field
+- [ ] endpoint most most selling items for each restaurant and whole mataem
 
 2. Customer
 

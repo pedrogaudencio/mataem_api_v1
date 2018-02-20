@@ -76,24 +76,25 @@ class Api::V1::OrdersController < Api::V1::ApiController
       @order.mobile_number = @order.profile.mobile_number
     end
     if not @order.delivery_address
-      @order.delivery_address = @api_v1_current_user.profile.address
+      @order.delivery_address = @order.profile.address or @api_v1_current_user.profile.address
     end
 
     if not @order.delivery_datetime
       @order.delivery_datetime = Time.now
-    else
-      @order.delivery_datetime = Time.parse(order_params[:delivery_datetime])
     end
 
     if @order.save
-      params[:order_items_attributes].each do |order_item|
+      params[:order_items].each do |order_item|
         OrderItem.create(
           order: @order,
           quantity: order_item[:quantity],
-          menu_item: MenuItem.find(order_item[:menu_item_id]),
-          item_choice_variants: ItemChoiceVariant.where(id: order_item[:item_choice_variants]))
+          menu_item_id: order_item[:menu_item_id]) #,
+          # item_choice_variants: ItemChoiceVariant.where(id: order_item[:item_choice_variants]))
       end
-      @order.calculate_total
+      if params[:coupon_id]
+        @order.update(coupon: Coupon.find(params[:coupon_id]))
+        @order.apply_coupon
+      end
       render json: @order, status: :created, location: @api_v1_order
     else
       render json: @order.errors, status: :unprocessable_entity
@@ -140,7 +141,9 @@ class Api::V1::OrdersController < Api::V1::ApiController
                                     order_items_attributes: [
                                       :quantity,
                                       :menu_item_id,
-                                      :item_choice_variants
+                                      item_choice_variants_attributes: [
+                                        :item_choice_id,
+                                      ]
                                     ])
     end
 end

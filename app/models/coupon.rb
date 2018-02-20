@@ -30,28 +30,33 @@ class Coupon < ApplicationRecord
   # end
 
   def valid_not_used?
-    return self.status == 0
+    return self.active?
   end
 
-  def valid_user_type?(user)
-    if user and self.first_time?
-      p = user.try(:profile) or self.order.profile
-      return Order.where(profile: p).empty?
+  def valid_user_type?
+    if self.first_time? and self.order.profile
+      return Order.where(profile: self.order.profile).empty?
     end
     return true
   end
 
-  def valid_app_type?(source)
+  def valid_restaurant?
+    if not self.restaurant.nil?
+      return self.restaurant == self.order.vendor.restaurant
+    end
+    return true
+  end
+
+  def valid_app_type?
     if not self.both_apps?
-      return self.app_type == (source or self.order.order_source)
+      return self.app_type == self.order.order_source
     end
     return true
   end
 
-  def valid_min_order_value?(val)
-    if not self.min_order_value.nil?
-      total = val or self.order.total
-      return self.min_order_value >= total
+  def valid_min_order_value?
+    if not (self.min_order_value.nil? or self.min_order_value.zero?)
+      return self.min_order_value >= self.order.total
     end
     return true
   end
