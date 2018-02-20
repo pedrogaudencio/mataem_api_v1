@@ -3,6 +3,7 @@ class Restaurant < ApplicationRecord
 
   enum status: { active: 0, inactive: 1 }
   enum restaurant_type: { veg_both: 0, veg: 1, non_veg: 2 }
+  enum payment_type: { payment_both: 0, cod: 1, online: 2 }
 
   has_many :vendors, dependent: :destroy
   has_one :social_media, dependent: :destroy

@@ -53,10 +53,10 @@ API Endpoint
 - [x] profile date of birth
 - [x] {large banner, small banner} option in advertisement, add vendor_id column
 - [x] get all restaurants, send user owner data details together
+- [x] restaurant enum payment_type: { payment_both: 0, cod: 1, online: 2 }
+- [x] vendor busy bool field
+- [x] vendor minimum_order_value field
 - [ ] get total amount for user (joining all orders)
-- [ ] restaurant enum payment_type: { payment_both: 0, cod: 1, online: 2 }
-- [ ] vendor busy bool field
-- [ ] vendor minimum_order_value field
 - [ ] endpoint most most selling items for each restaurant and whole mataem
 
 2. Customer
@@ -71,7 +71,7 @@ API Endpoint
 - [x] order delivery_datetime
 - [x] send user_id in review
 - [x] get coupon value + valid + restaurant_id (if any) by code
-- [ ] include coupon code in order and ignore if restaurant_id from coupon is not ==
+- [x] include coupon code in order and ignore if restaurant_id from coupon is not equal (or coupon is not valid)
 - [ ] list options to include in post requests (like active/inactive instead of 0/1), waiting for list
 
 3. Later
