@@ -126,6 +126,7 @@ class Api::V1::VendorsController < Api::V1::ApiController
                                      :delivery_fee,
                                      :delivery_time,
                                      :status,
+                                     :busy,
                                      :cuisine_ids,
                                      :category_ids,
                                      :delivery_area_ids)
