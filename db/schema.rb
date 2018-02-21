@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218174655) do
+ActiveRecord::Schema.define(version: 20180220094024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -504,6 +504,8 @@ ActiveRecord::Schema.define(version: 20180218174655) do
     t.bigint "categories_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "busy", default: false
+    t.float "minimum_order_value"
     t.index ["address_id"], name: "index_vendors_on_address_id"
     t.index ["categories_id"], name: "index_vendors_on_categories_id"
     t.index ["cuisines_id"], name: "index_vendors_on_cuisines_id"

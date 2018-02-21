@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :area, dependent: :destroy
+  belongs_to :area
   belongs_to :profile, optional: true
   belongs_to :vendor, optional: true
   accepts_nested_attributes_for :area
