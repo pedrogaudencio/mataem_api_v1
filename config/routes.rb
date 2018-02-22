@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       resources :questions do
         resources :answers
       end
+      get '/reviews_admin', to: 'reviews#index_admin'
       resources :reviews
       resources :order_items
       resources :orders, on: :member do

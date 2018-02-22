@@ -3,10 +3,17 @@ class Api::V1::ReviewsController < Api::V1::ApiController
 
   # GET /reviews
   def index
+    @reviews = Review.where(vendor_id: params[:vendor_id])
+
+    render json: @reviews
+  end
+
+  def index_admin
     @reviews = Review.all
 
     render json: @reviews
   end
+
 
   # GET /reviews/1
   def show

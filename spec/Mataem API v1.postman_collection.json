@@ -1529,6 +1529,25 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "REVIEWS: get all reviews for all vendors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
+				},
+				"url": "http://localhost:3000/api/v1/reviews_admin",
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
