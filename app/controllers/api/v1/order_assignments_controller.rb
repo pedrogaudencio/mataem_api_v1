@@ -21,6 +21,12 @@ class Api::V1::OrderAssignmentsController < Api::V1::ApiController
     render json: @order_assignments
   end
 
+  def by_delivery_boy
+    @order_assignments = OrderAssignment.where(user: params[:assignee_id])
+
+    render json: @order_assignments
+  end
+
   def accept_assignment
     current_user = User.find(order_assignment_params[:user_id]) or @api_v1_current_user
     if @order_assignment.pending? and @order_assignment.update(user: current_user,

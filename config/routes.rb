@@ -38,6 +38,9 @@ Rails.application.routes.draw do
         get :just_opened, on: :collection
         get :free_delivery, on: :collection
         get :delivers_in, on: :collection
+        get :is_busy, on: :member
+        get :get_cuisine_category_delivery_area, on: :collection
+        get '/menu_items_by_category', to: 'menu_items#by_category'
         resources :menu_items do
           resources :menu_item_cuisines
           resources :menu_item_categories
@@ -58,7 +61,9 @@ Rails.application.routes.draw do
         end
       end
       get '/orders_admin', to: 'orders#index_admin'
+      post '/orders_profile', to: 'orders#index_profile'
       get '/menu_items', to: 'menu_items#index'
+      get '/order_assignments_by_delivery_boy', to: 'order_assignments#by_delivery_boy'
       resources :menu_item_cuisines
       resources :menu_item_categories
 

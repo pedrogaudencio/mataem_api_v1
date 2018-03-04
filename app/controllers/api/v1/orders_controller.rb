@@ -8,6 +8,12 @@ class Api::V1::OrdersController < Api::V1::ApiController
     render json: @orders
   end
 
+  def index_profile
+    @orders = Order.where(profile_id: params[:id])
+
+    render json: @orders    
+  end
+
   # api :GET, '/orders', "List all orders"
   def index
     # if @api_v1_current_user.admin?

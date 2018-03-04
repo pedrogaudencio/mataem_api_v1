@@ -1,5 +1,5 @@
 class Api::V1::VendorsController < Api::V1::ApiController
-  before_action :set_vendor, only: [:show, :update, :destroy]
+  before_action :set_vendor, only: [:show, :update, :destroy, :is_busy, :by_category]
 
   # GET /vendors
   def index
@@ -33,6 +33,35 @@ class Api::V1::VendorsController < Api::V1::ApiController
     else
       render json: nil, status: :not_found
     end
+  end
+
+  def get_cuisine_category_delivery_area
+    all_vendors = Vendor.all
+    if params.key?(:cuisine) and not MenuItemCuisine.where(name: params[:cuisine]).first.nil?
+      vendors_cuisines = Vendor.with_cuisines(params[:cuisine])
+    else
+      vendors_cuisines = all_vendors
+    end
+    if params.key?(:category) and not MenuItemCategory.where(name: params[:category]).first.nil?
+      vendors_categories = Vendor.with_categories(params[:category])
+    else
+      vendors_categories = all_vendors
+    end
+    if params.key?(:area) and not Area.where(name: params[:area]).first.nil?
+      vendors_areas = Vendor.delivers_in(params[:area])
+    else
+      vendors_areas = all_vendors
+    end
+    @vendors = vendors_cuisines & vendors_categories & vendors_areas
+    if @vendors
+      render json: @vendors, location: @api_v1_vendors
+    else
+      render json: nil, status: :not_found
+    end
+  end
+
+  def is_busy
+      render json: @vendor.busy
   end
 
   def just_opened
