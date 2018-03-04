@@ -1548,6 +1548,126 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "VENDORS: get vendors with that category, cuisine and delivery area",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/vendors/get_cuisine_category_delivery_area?cuisine=American&category=Promotion&area=Area",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"vendors",
+						"get_cuisine_category_delivery_area"
+					],
+					"query": [
+						{
+							"key": "cuisine",
+							"value": "American",
+							"equals": true
+						},
+						{
+							"key": "category",
+							"value": "Promotion",
+							"equals": true
+						},
+						{
+							"key": "area",
+							"value": "Area",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER: get all orders for specific profile/user id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 1\n}"
+				},
+				"url": "http://localhost:3000/api/v1/orders_profile",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "VENDOR: get if specific vendor is busy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/is_busy",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ORDER ASSIGNMENT: list pending order assignments for delivery boy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"assignee_id\": 3\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/order_assignments_by_delivery_boy?assignee_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"order_assignments_by_delivery_boy"
+					],
+					"query": [
+						{
+							"key": "assignee_id",
+							"value": "1",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "MENU ITEMS: get menu items for specific vendor grouped by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:3000/api/v1/vendors/1/menu_items_by_category",
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
