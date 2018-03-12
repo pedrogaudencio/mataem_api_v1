@@ -14,6 +14,13 @@ class Api::V1::ProfilesController < Api::V1::ApiController
     render json: @profile
   end
 
+  def show_from_user
+    puts "cenas"
+    @profile = Profile.where(user_id: profile_params[:user_id])
+
+    render json: @profile
+  end
+
   # POST /profiles
   def create
     if profile_params.key?(:address_id)

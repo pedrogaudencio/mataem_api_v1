@@ -652,7 +652,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"review\": {\n\t\t\"user_id\": 1,\n\t\t\"vendor_id\": 1,\n\t\t\"rating\": 4,\n\t\t\"comment\": \"Food was good.\",\n\t\t\"order_packaging\": 3,\n\t\t\"value_for_money\": 5,\n\t\t\"delivery_time\": 4,\n\t\t\"food_quality\": 4\n\t}\n}\n"
+					"raw": "{\n  \"review\": {\n    \"user_id\": 1,\n    \"vendor_id\": 1,\n    \"rating\": 4,\n    \"comment\": \"Food was good.\",\n    \"order_packaging\": 3,\n    \"value_for_money\": 5,\n    \"delivery_time\": 4,\n    \"food_quality\": 4\n  }\n}\n"
 				},
 				"url": "http://localhost:3000/api/v1/vendors/1/reviews",
 				"description": ""
@@ -1147,7 +1147,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"advertisement\": {\n\t  \"restaurant_id\": 1,\n\t  \"vendor_id\": 1,\n\t  \"title\": \"Ad Example\",\n\t  \"size\": \"large\",\n\t  \"start_date\": \"2018-02-18\",\n\t  \"end_date\": \"2018-02-28\"\n\t}\n}\n"
+					"raw": "{\n  \"advertisement\": {\n    \"restaurant_id\": 1,\n    \"vendor_id\": 1,\n    \"title\": \"Ad Example\",\n    \"size\": \"large\",\n    \"start_date\": \"2018-02-18\",\n    \"end_date\": \"2018-02-28\"\n  }\n}\n"
 				},
 				"url": "http://localhost:3000/api/v1/advertisements/",
 				"description": null
@@ -1449,7 +1449,7 @@
 				"header": [],
 				"body": {},
 				"url": "http://localhost:3000/api/v1/restaurants/get_featured",
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1488,7 +1488,7 @@
 						}
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1507,7 +1507,7 @@
 					"raw": "{\n  \"value\": 10.0,\n  \"restaurant_id\": 1\n}\n"
 				},
 				"url": "http://localhost:3000/api/v1/coupons",
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1523,10 +1523,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"order\" : {\n\t    \"profile_id\": 1,\n\t    \"vendor_id\": 1,\n\t    \"area_id\": 1,\n\t    \"delivery_type\": \"delivery\",\n\t    \"order_source\": \"web\",\n\t    \"payment_type\": \"cod\"\n\t},\n\t\"order_items\": [\n    \t{\n    \t\t\"menu_item_id\": 1,\n    \t\t\"quantity\": 2,\n    \t\t\"item_choice_variants\": [3]\n    \t},\n    \t{\n    \t\t\"menu_item_id\": 1,\n    \t\t\"quantity\": 2,\n    \t\t\"item_choice_variants\": [1]\n    \t},\n    \t{\n    \t\t\"menu_item_id\": 1,\n    \t\t\"quantity\": 2,\n    \t\t\"item_choice_variants\": [1]\n    \t}\n\t],\n\t\"coupon_id\": 3\n}"
+					"raw": "{\n  \"order\" : {\n      \"profile_id\": 1,\n      \"vendor_id\": 1,\n      \"area_id\": 1,\n      \"delivery_type\": \"delivery\",\n      \"order_source\": \"web\",\n      \"payment_type\": \"cod\"\n  },\n  \"order_items\": [\n      {\n        \"menu_item_id\": 1,\n        \"quantity\": 2,\n        \"item_choice_variants\": [3]\n      },\n      {\n        \"menu_item_id\": 1,\n        \"quantity\": 2,\n        \"item_choice_variants\": [1]\n      },\n      {\n        \"menu_item_id\": 1,\n        \"quantity\": 2,\n        \"item_choice_variants\": [1]\n      }\n  ],\n  \"coupon_id\": 3\n}"
 				},
 				"url": "http://localhost:3000/api/v1/vendors/1/orders",
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1545,7 +1545,7 @@
 					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
 				},
 				"url": "http://localhost:3000/api/v1/reviews_admin",
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1586,7 +1586,7 @@
 						}
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1602,10 +1602,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"id\": 1\n}"
+					"raw": "{\n  \"id\": 1\n}"
 				},
 				"url": "http://localhost:3000/api/v1/orders_profile",
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1616,7 +1616,7 @@
 				"header": [],
 				"body": {},
 				"url": "http://localhost:3000/api/v1/vendors/1/is_busy",
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1654,7 +1654,7 @@
 						}
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -1665,6 +1665,46 @@
 				"header": [],
 				"body": {},
 				"url": "http://localhost:3000/api/v1/vendors/1/menu_items_by_category",
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "PROFILES: get one from user_id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"question_id\": 2,\n  \"text\": \"This is an answer.\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/profiles/show_from_user/?user_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"profiles",
+						"show_from_user",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"equals": true
+						}
+					]
+				},
 				"description": ""
 			},
 			"response": []
