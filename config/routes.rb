@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       end
       get '/orders_admin', to: 'orders#index_admin'
       post '/orders_profile', to: 'orders#index_profile'
+      post '/addresses_profile', to: 'addresses#index_profile'
       get '/menu_items', to: 'menu_items#index'
       get '/order_assignments_by_delivery_boy', to: 'order_assignments#by_delivery_boy'
       resources :menu_item_cuisines

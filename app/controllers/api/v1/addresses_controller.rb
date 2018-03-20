@@ -47,6 +47,11 @@ class Api::V1::AddressesController < Api::V1::ApiController
     @address.destroy
   end
 
+  def index_profile
+    @addresses = Address.where(profile_id: params[:id])
+    render json: @addresses
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_address
