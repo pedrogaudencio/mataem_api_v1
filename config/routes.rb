@@ -86,6 +86,7 @@ Rails.application.routes.draw do
         get 'click', to: 'advertisements#click', on: :member
       end
       scope '/reports' do
+        get :most_sold_item, to: 'reports#most_sold_item'
         get :best_selling_area, to: 'reports#best_selling_area'
         get :most_selling_items, to: 'reports#most_selling_items'
         get :daily_sales, to: 'reports#daily_sales'

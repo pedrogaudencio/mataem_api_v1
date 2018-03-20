@@ -13,6 +13,10 @@ class Api::V1::ReportsController < Api::V1::ApiController
     render json: @vendor
   end
 
+  def most_sold_item
+    render json: ReportingService.most_sold_item(params)
+  end
+
   def best_selling_area
   # overall and restaurant wise
 
