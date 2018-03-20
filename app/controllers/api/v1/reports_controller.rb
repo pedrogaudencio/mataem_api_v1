@@ -55,4 +55,7 @@ class Api::V1::ReportsController < Api::V1::ApiController
 
   end
 
+  def rejected_orders
+    render json: ReportingService.rejected_orders
+  end
 end

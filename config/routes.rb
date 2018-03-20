@@ -97,7 +97,7 @@ Rails.application.routes.draw do
         get :due_payments, to: 'reports#due_payments'
         # get :busiest_restaurant, to: 'reports#'
         # get :delivery_boy, to: 'reports#'
-        # get :rejected_orders, to: 'reports#'
+        get :rejected_orders, to: 'reports#rejected_orders'
       end
     end
   end
