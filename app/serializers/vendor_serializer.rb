@@ -1,5 +1,5 @@
 class VendorSerializer < ActiveModel::Serializer
-  attributes :id, :name, :preorder, :pickup, :delivery_fee, :delivery_time, :status, :menu_items, :delivery_areas, :busy
+  attributes :id, :name, :preorder, :pickup, :delivery_fee, :delivery_time, :status, :menu_items, :delivery_areas, :busy, :cuisines, :reviews
   belongs_to :address
   belongs_to :restaurant
   has_many :menu_items
