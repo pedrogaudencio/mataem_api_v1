@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
           # :confirmable, 
           :omniauthable, :omniauth_providers => [:facebook]
   include DeviseTokenAuth::Concerns::User
+  after_create :send_email
 
   # Role - don't change!
   enum role: { customer: 0, delivery_boy: 1, business: 2, admin: 3 }
@@ -20,5 +21,11 @@ class User < ActiveRecord::Base
   after_initialize do
     Profile.create!(user: self) if profile.nil?
     # build_profile(user: self) if profile.nil?
+  end
+
+  private
+
+  def send_email
+    UserMailer.registration_email(self).deliver
   end
 end

@@ -53,15 +53,17 @@ class Order < ApplicationRecord
 
   def accept
     self.update(status: :accepted, progress_status: :accepted_order)
+    UserMailer.order_processing(self.profile.user, self.id, :accept).deliver
   end
 
   def reject
     self.update(status: :rejected, progress_status: :closed)
+    UserMailer.order_processing(self.profile.user, self.id, :reject).deliver
   end
 
   def mark_out_for_delivery
     self.update(progress_status: :out_for_delivery)
-    # send notification to user
+    UserMailer.order_processing(self.profile.user, self.id, :mark_out_for_delivery).deliver
   end
 
   def mark_delivered
