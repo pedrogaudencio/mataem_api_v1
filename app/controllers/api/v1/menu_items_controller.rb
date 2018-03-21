@@ -31,11 +31,13 @@ class Api::V1::MenuItemsController < Api::V1::ApiController
   def by_category
     if params[:vendor_id]
       menu_items = MenuItem.where(vendor: params[:vendor_id]).group_by(&:menu_item_category).map do |cat, menu_items|
-          {"name": cat.name,
+          {
+            "name": cat.name,
            "id": cat.id,
            "status": cat.status,
            "sort_order": cat.sort_order,
-           "items": menu_items}
+           "items": menu_items.collect{ |item| { item_detail: item, image: item.image.url } }
+          }
       end
       render json: menu_items
     else
