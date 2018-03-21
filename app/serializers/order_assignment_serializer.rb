@@ -4,6 +4,6 @@ class OrderAssignmentSerializer < ActiveModel::Serializer
   belongs_to :order
 
   def profile
-    object.user.profile
+    object.user.try(:profile)
   end
 end
