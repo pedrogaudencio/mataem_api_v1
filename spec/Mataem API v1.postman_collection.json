@@ -1708,6 +1708,64 @@
 				"description": ""
 			},
 			"response": []
-		}
+		},
+		{
+			"name": "Report: get most sold item",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/reports/most_sold_item?start_date=09-12-2017&end_date=19-12-2018",
+			"queryParams": [
+				{
+					"key": "start_date",
+					"value": "09-12-2017",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "end_date",
+					"value": "19-12-2018",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"dataMode": "raw",
+			"description": "REPORTS: Most selling item overall and with starting and ending date filters if required",
+		},
+		{
+			"name": "Report: get rejected orders",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/reports/rejected_orders",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "PROFILES: Get all address for specific profile",
+			"description": "",
+			"headers": "",
+			"url": "http://localhost:3000/api/v1/addresses_profile",
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\"id\": 1\n}"
+		},
 	]
 }
