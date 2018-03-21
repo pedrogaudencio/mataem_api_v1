@@ -8,6 +8,6 @@ class RestaurantSerializer < ActiveModel::Serializer
   end
 
   def owner_details
-    Profile.where(restaurant: object).first.user
+    Profile.where(restaurant: object).first.try(:user)
   end
 end
