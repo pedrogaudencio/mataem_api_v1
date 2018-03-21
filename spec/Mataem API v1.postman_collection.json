@@ -1720,7 +1720,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:3000/api/v1/reports/most_sold_item?start_date=09-12-2017&end_date=19-12-2018",
+			"url": "http://localhost:3000/api/v1/most_sold_item?start_date=09-12-2017&end_date=19-12-2018",
 			"queryParams": [
 				{
 					"key": "start_date",
@@ -1751,7 +1751,91 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/reports/rejected_orders",
+			"url": "http://localhost:3000/api/v1/rma-reports/rejected_orders",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "Report: get best selling areas",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/rma-reports/best_selling_areas",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "Report: get best selling items",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/rma-reports/best_selling_items",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "Report: get day wise sales",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/rma-reports/daily_sales",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "Report: get month wise sales",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/rma-reports/monthly_sales",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "Report: get busy resturants",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/rma-reports/busy_resturants",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "Report: get delivery boy reports",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/rma-reports/delivery_boys",
 			"method": "GET",
 			"dataMode": "raw",
 		},
