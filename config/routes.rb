@@ -85,19 +85,17 @@ Rails.application.routes.draw do
       resources :advertisements, on: :member do
         get 'click', to: 'advertisements#click', on: :member
       end
-      scope '/reports' do
-        get :most_sold_item, to: 'reports#most_sold_item'
-        get :best_selling_area, to: 'reports#best_selling_area'
-        get :most_selling_items, to: 'reports#most_selling_items'
-        get :daily_sales, to: 'reports#daily_sales'
-        get :monthly_sales, to: 'reports#monthly_sales'
-        get :best_selling_restaurant, to: 'reports#best_selling_restaurant'
-        get :mataem_revenue, to: 'reports#mataem_revenue'
-        get :restaurant_performance, to: 'reports#restaurant_performance'
-        get :due_payments, to: 'reports#due_payments'
-        # get :busiest_restaurant, to: 'reports#'
-        # get :delivery_boy, to: 'reports#'
+
+      get :most_sold_item, to: 'reports#most_sold_item'
+      # RMA REPORTS
+      scope 'rma-reports' do
+        get :best_selling_areas, to: 'reports#overall_best_selling_areas'
+        get :best_selling_items, to: 'reports#overall_best_selling_items'
+        get :daily_sales, to: 'reports#overall_daily_sales'
+        get :monthly_sales, to: 'reports#overall_monthly_sales'
         get :rejected_orders, to: 'reports#rejected_orders'
+        get :busy_resturants, to: 'reports#busy_resturants'
+        get :delivery_boys, to: 'reports#delivery_boys'
       end
     end
   end
