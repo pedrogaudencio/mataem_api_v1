@@ -5,7 +5,7 @@ class Profile < ApplicationRecord
   belongs_to :restaurant, optional: true  # for staff members
   has_one :address
   accepts_nested_attributes_for :address, :user
-  default_scope { :active }
+  default_scope { where(status: 0) }
 
   enum status: { active: 0, inactive: 1, blocked: 2 }
   enum gender: { female: 0, male: 1 }
