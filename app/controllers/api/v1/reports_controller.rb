@@ -1,61 +1,35 @@
 class Api::V1::ReportsController < Api::V1::ApiController
-  # before_action :set_vendor, only: [:show, :update, :destroy]
-
-  # GET /vendors
-  def index
-    @vendors = Vendor.all
-
-    render json: @vendors
-  end
-
-  # GET /vendors/1
-  def show
-    render json: @vendor
-  end
-
+  # GENERAL REPORTS
   def most_sold_item
     render json: ReportingService.most_sold_item(params)
   end
 
-  def best_selling_area
-  # overall and restaurant wise
-
+  # RMA REPORTS
+  def overall_best_selling_areas
+    render json: ReportingService.overall_best_selling_areas
   end
 
-  def most_selling_items
-  # overall and restaurant wise
-
+  def overall_best_selling_items
+    render json: ReportingService.overall_best_selling_items
   end
 
-  def daily_sales
-  # overall and restaurant wise
-
+  def overall_daily_sales
+    render json: ReportingService.overall_daily_sales
   end
 
-  def monthly_sales
-  # overall and restaurant wise
-
-  end
-
-  def best_selling_restaurant
-
-  end
-
-  def mataem_revenue
-  # overall and restaurant wise
-
-  end
-
-  def restaurant_performance
-
-  end
-
-  def due_payments
-  # overall and restaurant wise
-
+  def overall_monthly_sales
+    render json: ReportingService.overall_monthly_sales
   end
 
   def rejected_orders
     render json: ReportingService.rejected_orders
+  end
+
+  def busy_resturants
+    render json: ReportingService.busy_resturants
+  end
+
+  def delivery_boys
+    render json: ReportingService.delivery_boys
   end
 end
