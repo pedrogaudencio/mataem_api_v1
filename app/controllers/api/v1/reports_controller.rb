@@ -1,61 +1,57 @@
 class Api::V1::ReportsController < Api::V1::ApiController
-  # before_action :set_vendor, only: [:show, :update, :destroy]
-
-  # GET /vendors
-  def index
-    @vendors = Vendor.all
-
-    render json: @vendors
-  end
-
-  # GET /vendors/1
-  def show
-    render json: @vendor
-  end
-
+  # GENERAL REPORTS
   def most_sold_item
     render json: ReportingService.most_sold_item(params)
   end
 
-  def best_selling_area
-  # overall and restaurant wise
-
+  # COMMON
+  def best_selling_areas
+    render json: ReportingService.best_selling_areas(params)
   end
 
-  def most_selling_items
-  # overall and restaurant wise
-
+  def best_selling_items
+    render json: ReportingService.best_selling_items(params)
   end
 
   def daily_sales
-  # overall and restaurant wise
-
+    render json: ReportingService.daily_sales(params)
   end
 
   def monthly_sales
-  # overall and restaurant wise
-
+    render json: ReportingService.monthly_sales(params)
   end
 
-  def best_selling_restaurant
-
+  # RMA
+  def delivery_boys
+    render json: ReportingService.delivery_boys(params)
   end
 
-  def mataem_revenue
-  # overall and restaurant wise
-
-  end
-
-  def restaurant_performance
-
-  end
-
-  def due_payments
-  # overall and restaurant wise
-
+  def busy_resturants
+    render json: ReportingService.busy_resturants(params)
   end
 
   def rejected_orders
-    render json: ReportingService.rejected_orders
+    render json: ReportingService.rejected_orders(params)
+  end
+
+  # SUA
+  def best_selling_resturants
+    render json: ReportingService.best_selling_resturants
+  end
+
+  def mataem_revenue
+    render json: ReportingService.mataem_revenue
+  end
+
+  def restaurant_performances
+    render json: ReportingService.restaurant_performances
+  end
+
+  def due_payments
+    render json: ReportingService.due_payments
+  end
+
+  def cookies_rewards
+    render json: ReportingService.cookies_rewards
   end
 end
