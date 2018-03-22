@@ -87,22 +87,18 @@ Rails.application.routes.draw do
       end
 
       get :most_sold_item, to: 'reports#most_sold_item'
-      # RMA REPORTS
-      scope 'rma-reports' do
-        get :best_selling_areas, to: 'reports#overall_best_selling_areas'
-        get :best_selling_items, to: 'reports#overall_best_selling_items'
-        get :daily_sales, to: 'reports#overall_daily_sales'
-        get :monthly_sales, to: 'reports#overall_monthly_sales'
-        get :rejected_orders, to: 'reports#rejected_orders'
-        get :busy_resturants, to: 'reports#busy_resturants'
+
+      scope 'reports' do
+        #common
+        get :best_selling_areas, to: 'reports#best_selling_areas'
+        get :best_selling_items, to: 'reports#best_selling_items'
+        get :daily_sales, to: 'reports#daily_sales'
+        get :monthly_sales, to: 'reports#monthly_sales'
+        #RMA
         get :delivery_boys, to: 'reports#delivery_boys'
-      end
-      # SUA REPORTS
-      scope 'sua-reports' do
-        get :best_selling_areas, to: 'reports#sua_best_selling_areas'
-        get :best_selling_items, to: 'reports#sua_best_selling_items'
-        get :daily_sales, to: 'reports#sua_daily_sales'
-        get :monthly_sales, to: 'reports#sua_monthly_sales'
+        get :busy_resturants, to: 'reports#busy_resturants'
+        get :rejected_orders, to: 'reports#rejected_orders'
+        #SUA
         get :best_selling_resturants, to: 'reports#best_selling_resturants'
         get :mataem_revenue, to: 'reports#mataem_revenue'
         get :restaurant_performances, to: 'reports#restaurant_performances'

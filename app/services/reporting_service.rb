@@ -12,40 +12,35 @@ class ReportingService
       { item: menu_item.as_json(except: :vendor), restaurant: menu_item.try(:vendor).try(:restaurant) }
     end
 
+    # COMMAN
+    def best_selling_items(params)
+    end
+
+    def best_selling_areas(params)
+      orders = fetch_orders(params)
+      areas_orders_reports(orders.group_by{ |order| order.area_id }, orders.sum(:total))
+    end
+
+    def daily_sales(params)
+      sales_orders_reports(fetch_orders(params).order('created_at DESC').group_by{ |order| order.created_at.to_date })
+    end
+
+    def monthly_sales(params)
+      sales_orders_reports(fetch_orders(params).order('created_at DESC').group_by{ |order| order.created_at.beginning_of_month })
+    end
+
     #RMA REPORTS
-    def rejected_orders
-      Order.rejected.includes(:profile).collect do |order|
-        {
-          order_number: order.id, date: formatted_date(order.created_at), amount: order.total,
-          customer_name: order.profile.full_name, contact_number: order.profile.mobile_number
-        }
-      end
-    end
+    def delivery_boys(params)
+      order_ids = Vendor.find_by(id: params[:vendor_id]).orders.pluck(:id).uniq if params[:vendor_id].present?
+      orders_assignments = OrderAssignment.where(id: order_ids).includes(user: :profile).includes(:order)
+      orders_assignments = OrderAssignment.all.includes(user: :profile).includes(:order) unless orders_assignments.present?
 
-    def overall_daily_sales
-      sales_orders_reports(Order.all.order('created_at DESC').group_by{ |order| order.created_at.to_date })
-    end
-
-    def overall_monthly_sales
-      sales_orders_reports(Order.all.order('created_at DESC').group_by{ |order| order.created_at.beginning_of_month })
-    end
-
-    def busy_resturants
-      busy_resturants = Vendor.where(busy: true).pluck(:restaurant_id)
-      return [] unless busy_resturants.present?
-
-      Restaurant.where(id: busy_resturants).collect do |restaurant|
-        { name: restaurant.name, busy_time: formatted_time(Time.now), date: formatted_date(Date.today), duration: 0 }
-      end
-    end
-
-    def delivery_boys
       assignment_hash = {}
-      OrderAssignment.includes(user: :profile).includes(:order).each { |assignment|
+      orders_assignments.each { |assignment|
         assignment_hash[assignment.user_id] = { name: assignment.user.full_name, order_total: assignment.order.total }
       }
 
-      order_assignments = OrderAssignment.all.group_by{ |order_assignment| order_assignment.user_id }
+      order_assignments = orders_assignments.group_by{ |order_assignment| order_assignment.user_id }
       order_assignments.collect do |user_id, assignment_details|
         assignment = assignment_hash[user_id]
         {
@@ -58,16 +53,24 @@ class ReportingService
       end
     end
 
-    def overall_best_selling_items
-      #TODO
+    def busy_resturants(params)
+      #TO-DO keep track of busy/unbusy resturants
+      vendor = Vendor.where(id: params[:vendor_id], busy: true).first
+      Restaurant.where(id: vendor.id).collect do |restaurant|
+        { name: restaurant.name, busy_time: formatted_time(Time.now), date: formatted_date(Date.today), duration: 0 }
+      end if vendor.present?
     end
 
-    def overall_best_selling_areas
-      areas_orders_reports(Order.all.group_by{ |order| order.area_id }, Order.sum(:total))
+    def rejected_orders(params)
+      fetch_orders(params).rejected.includes(:profile).collect do |order|
+        {
+          order_number: order.id, date: formatted_date(order.created_at), amount: order.total,
+          customer_name: order.profile.full_name, contact_number: order.profile.mobile_number
+        }
+      end
     end
 
-    #SUA REPORTS
-
+    # SUA REPORTS
     def restaurant_performances
       ordered_resturants = Restaurant.order('created_at DESC').includes(vendors: :orders).group_by{ |order| order.created_at.beginning_of_month }
       ordered_resturants.collect do |key, resturants|
@@ -83,59 +86,26 @@ class ReportingService
       end
     end
 
-    def sua_best_selling_areas
-      restaurant_wise_details = Restaurant.includes(vendors: :orders).collect do |resturant|
-        details = resturant.vendors.collect do |vendor|
-          orders = vendor.orders
-          areas_orders_reports(orders.group_by{ |order| order.area_id }, orders.sum(:total))
-        end
-        { resturant: resturant, areas: details.flatten }
-      end
-      { overall: overall_best_selling_areas, restuant_wise: restaurant_wise_details }
-    end
-
-    def sua_daily_sales
-      restaurant_wise_details = Restaurant.includes(vendors: :orders).collect do |resturant|
-        details = resturant.vendors.collect do |vendor|
-          orders = vendor.orders
-          sales_orders_reports(orders.order('created_at DESC').group_by{ |order| order.created_at.to_date })
-        end
-        { resturant: resturant, daily_sales: details.flatten }
-      end
-      { overall: overall_daily_sales, restuant_wise: restaurant_wise_details }
-    end
-
-    def sua_monthly_sales
-      restaurant_wise_details = Restaurant.includes(vendors: :orders).collect do |resturant|
-        details = resturant.vendors.collect do |vendor|
-          orders = vendor.orders
-          sales_orders_reports(orders.order('created_at DESC').group_by{ |order| order.created_at.beginning_of_month })
-        end
-        { resturant: resturant, monthly_sales: details.flatten }
-      end
-      { overall: overall_monthly_sales, restuant_wise: restaurant_wise_details }
-    end
-
     def best_selling_resturants
     end
 
     def mataem_revenue
-      { overall: nil, restuant_wise: nil }
     end
 
     def due_payments
-      { overall: nil, restuant_wise:nil }
     end
 
     def cookies_rewards
-      { overall: nil, restuant_wise: nil }
-    end
-
-    def sua_best_selling_items
-      { overall: sua_best_selling_items, restuant_wise: nil }
     end
 
     private
+
+    def fetch_orders(params)
+      orders = Vendor.find_by(id: params[:vendor_id]).orders if params[:vendor_id].present?
+      orders = Order.all unless orders.present?
+      orders
+    end
+
     def date_range(params)
       start_date = Date.parse(params[:start_date]) rescue nil
       end_date = Date.parse(params[:end_date]) rescue nil

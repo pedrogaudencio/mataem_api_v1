@@ -4,52 +4,37 @@ class Api::V1::ReportsController < Api::V1::ApiController
     render json: ReportingService.most_sold_item(params)
   end
 
-  # RMA REPORTS
-  def overall_best_selling_areas
-    render json: ReportingService.overall_best_selling_areas
+  # COMMON
+  def best_selling_areas
+    render json: ReportingService.best_selling_areas(params)
   end
 
-  def overall_best_selling_items
-    render json: ReportingService.overall_best_selling_items
+  def best_selling_items
+    render json: ReportingService.best_selling_items(params)
   end
 
-  def overall_daily_sales
-    render json: ReportingService.overall_daily_sales
+  def daily_sales
+    render json: ReportingService.daily_sales(params)
   end
 
-  def overall_monthly_sales
-    render json: ReportingService.overall_monthly_sales
+  def monthly_sales
+    render json: ReportingService.monthly_sales(params)
   end
 
-  def rejected_orders
-    render json: ReportingService.rejected_orders
+  # RMA
+  def delivery_boys
+    render json: ReportingService.delivery_boys(params)
   end
 
   def busy_resturants
-    render json: ReportingService.busy_resturants
+    render json: ReportingService.busy_resturants(params)
   end
 
-  def delivery_boys
-    render json: ReportingService.delivery_boys
+  def rejected_orders
+    render json: ReportingService.rejected_orders(params)
   end
 
-  # SUA REPORTS
-  def sua_best_selling_areas
-    render json: ReportingService.sua_best_selling_areas
-  end
-
-  def sua_best_selling_items
-    render json: ReportingService.sua_best_selling_items
-  end
-
-  def sua_daily_sales
-    render json: ReportingService.sua_daily_sales
-  end
-
-  def sua_monthly_sales
-    render json: ReportingService.sua_monthly_sales
-  end
-
+  # SUA
   def best_selling_resturants
     render json: ReportingService.best_selling_resturants
   end
