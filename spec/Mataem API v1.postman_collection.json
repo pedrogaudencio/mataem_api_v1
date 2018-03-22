@@ -1710,6 +1710,18 @@
 			"response": []
 		},
 		{
+			"name": "PROFILES: Get all address for specific profile",
+			"description": "",
+			"headers": "",
+			"url": "http://localhost:3000/api/v1/addresses_profile",
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\"id\": 1\n}"
+		},
+		{
 			"name": "Report: get most sold item",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1742,7 +1754,7 @@
 			"description": "REPORTS: Most selling item overall and with starting and ending date filters if required",
 		},
 		{
-			"name": "Report: get rejected orders",
+			"name": "Report: get best selling areas orders overall or by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1751,12 +1763,20 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/rma-reports/rejected_orders",
+			"url": "http://localhost:3000/api/v1/reports/best_selling_areas?vendor_id=3",
+			"queryParams": [
+				{
+					"key": "vendor_id",
+					"value": "3",
+					"equals": true,
+					"enabled": true
+				},
+			],
 			"method": "GET",
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get best selling areas",
+			"name": "Report: get best selling items orders overall or by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1765,12 +1785,20 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/rma-reports/best_selling_areas",
+			"url": "http://localhost:3000/api/v1/reports/best_selling_items?vendor_id=3",
+			"queryParams": [
+				{
+					"key": "vendor_id",
+					"value": "3",
+					"equals": true,
+					"enabled": true
+				},
+			],
 			"method": "GET",
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get best selling items",
+			"name": "Report: get daily sales overall or by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1779,12 +1807,20 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/rma-reports/best_selling_items",
+			"url": "http://localhost:3000/api/v1/reports/daily_sales?vendor_id=3",
+			"queryParams": [
+				{
+					"key": "vendor_id",
+					"value": "3",
+					"equals": true,
+					"enabled": true
+				},
+			],
 			"method": "GET",
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get day wise sales",
+			"name": "Report: get monthly sales orders overall or by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1793,12 +1829,20 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/rma-reports/daily_sales",
+			"url": "http://localhost:3000/api/v1/reports/monthly_sales?vendor_id=3",
+			"queryParams": [
+				{
+					"key": "vendor_id",
+					"value": "3",
+					"equals": true,
+					"enabled": true
+				},
+			],
 			"method": "GET",
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get month wise sales",
+			"name": "Report: get delivery_boys orverall or by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1807,12 +1851,20 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/rma-reports/monthly_sales",
+			"url": "http://localhost:3000/api/v1/reports/delivery_boys?vendor_id=3",
+			"queryParams": [
+				{
+					"key": "vendor_id",
+					"value": "3",
+					"equals": true,
+					"enabled": true
+				},
+			],
 			"method": "GET",
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get busy resturants",
+			"name": "Report: get busy restaurants by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1821,12 +1873,20 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/rma-reports/busy_resturants",
+			"url": "http://localhost:3000/api/v1/reports/busy_resturants?vendor_id=3",
+			"queryParams": [
+				{
+					"key": "vendor_id",
+					"value": "3",
+					"equals": true,
+					"enabled": true
+				},
+			],
 			"method": "GET",
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get delivery boy reports",
+			"name": "Report: get rejected orders overall and by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1835,21 +1895,17 @@
 					"value": "application/json",
 				}
 			],
-			"url": "http://localhost:3000/api/v1/rma-reports/delivery_boys",
+			"url": "http://localhost:3000/api/v1/reports/rejected_orders?vendor_id=3",
+			"queryParams": [
+				{
+					"key": "vendor_id",
+					"value": "3",
+					"equals": true,
+					"enabled": true
+				},
+			],
 			"method": "GET",
 			"dataMode": "raw",
-		},
-		{
-			"name": "PROFILES: Get all address for specific profile",
-			"description": "",
-			"headers": "",
-			"url": "http://localhost:3000/api/v1/addresses_profile",
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "{\n\"id\": 1\n}"
 		},
 	]
 }
