@@ -97,6 +97,18 @@ Rails.application.routes.draw do
         get :busy_resturants, to: 'reports#busy_resturants'
         get :delivery_boys, to: 'reports#delivery_boys'
       end
+      # SUA REPORTS
+      scope 'sua-reports' do
+        get :best_selling_areas, to: 'reports#sua_best_selling_areas'
+        get :best_selling_items, to: 'reports#sua_best_selling_items'
+        get :daily_sales, to: 'reports#sua_daily_sales'
+        get :monthly_sales, to: 'reports#sua_monthly_sales'
+        get :best_selling_resturants, to: 'reports#best_selling_resturants'
+        get :mataem_revenue, to: 'reports#mataem_revenue'
+        get :restaurant_performances, to: 'reports#restaurant_performances'
+        get :due_payments, to: 'reports#due_payments'
+        get :cookies_rewards, to: 'reports#cookies_rewards'
+      end
     end
   end
 end

@@ -32,4 +32,41 @@ class Api::V1::ReportsController < Api::V1::ApiController
   def delivery_boys
     render json: ReportingService.delivery_boys
   end
+
+  # SUA REPORTS
+  def sua_best_selling_areas
+    render json: ReportingService.sua_best_selling_areas
+  end
+
+  def sua_best_selling_items
+    render json: ReportingService.sua_best_selling_items
+  end
+
+  def sua_daily_sales
+    render json: ReportingService.sua_daily_sales
+  end
+
+  def sua_monthly_sales
+    render json: ReportingService.sua_monthly_sales
+  end
+
+  def best_selling_resturants
+    render json: ReportingService.best_selling_resturants
+  end
+
+  def mataem_revenue
+    render json: ReportingService.mataem_revenue
+  end
+
+  def restaurant_performances
+    render json: ReportingService.restaurant_performances
+  end
+
+  def due_payments
+    render json: ReportingService.due_payments
+  end
+
+  def cookies_rewards
+    render json: ReportingService.cookies_rewards
+  end
 end

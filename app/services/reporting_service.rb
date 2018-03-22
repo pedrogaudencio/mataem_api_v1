@@ -1,5 +1,6 @@
 class ReportingService
   class << self
+    # GENERAL REPORTS
     def most_sold_item(params)
       date_range = date_range(params)
       order_items = OrderItem.where(created_at: date_range) if date_range.present?
@@ -11,6 +12,7 @@ class ReportingService
       { item: menu_item.as_json(except: :vendor), restaurant: menu_item.try(:vendor).try(:restaurant) }
     end
 
+    #RMA REPORTS
     def rejected_orders
       Order.rejected.includes(:profile).collect do |order|
         {
@@ -62,6 +64,75 @@ class ReportingService
 
     def overall_best_selling_areas
       areas_orders_reports(Order.all.group_by{ |order| order.area_id }, Order.sum(:total))
+    end
+
+    #SUA REPORTS
+
+    def restaurant_performances
+      ordered_resturants = Restaurant.order('created_at DESC').includes(vendors: :orders).group_by{ |order| order.created_at.beginning_of_month }
+      ordered_resturants.collect do |key, resturants|
+        order_length = order_sum = 0
+        resturants.each do |resturant|
+          resturant.vendors.each do |vendor|
+            orders = vendor.orders
+            order_length = order_length + orders.length
+            order_sum = order_sum + orders.sum(&:total)
+          end
+        end
+        { month: key.strftime('%B'), year: key.strftime('%Y'), registered_count: resturants.length, order_amount: order_sum, order_count: order_length }
+      end
+    end
+
+    def sua_best_selling_areas
+      restaurant_wise_details = Restaurant.includes(vendors: :orders).collect do |resturant|
+        details = resturant.vendors.collect do |vendor|
+          orders = vendor.orders
+          areas_orders_reports(orders.group_by{ |order| order.area_id }, orders.sum(:total))
+        end
+        { resturant: resturant, areas: details.flatten }
+      end
+      { overall: overall_best_selling_areas, restuant_wise: restaurant_wise_details }
+    end
+
+    def sua_daily_sales
+      restaurant_wise_details = Restaurant.includes(vendors: :orders).collect do |resturant|
+        details = resturant.vendors.collect do |vendor|
+          orders = vendor.orders
+          sales_orders_reports(orders.order('created_at DESC').group_by{ |order| order.created_at.to_date })
+        end
+        { resturant: resturant, daily_sales: details.flatten }
+      end
+      { overall: overall_daily_sales, restuant_wise: restaurant_wise_details }
+    end
+
+    def sua_monthly_sales
+      restaurant_wise_details = Restaurant.includes(vendors: :orders).collect do |resturant|
+        details = resturant.vendors.collect do |vendor|
+          orders = vendor.orders
+          sales_orders_reports(orders.order('created_at DESC').group_by{ |order| order.created_at.beginning_of_month })
+        end
+        { resturant: resturant, monthly_sales: details.flatten }
+      end
+      { overall: overall_monthly_sales, restuant_wise: restaurant_wise_details }
+    end
+
+    def best_selling_resturants
+    end
+
+    def mataem_revenue
+      { overall: nil, restuant_wise: nil }
+    end
+
+    def due_payments
+      { overall: nil, restuant_wise:nil }
+    end
+
+    def cookies_rewards
+      { overall: nil, restuant_wise: nil }
+    end
+
+    def sua_best_selling_items
+      { overall: sua_best_selling_items, restuant_wise: nil }
     end
 
     private
