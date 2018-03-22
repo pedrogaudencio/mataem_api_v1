@@ -1842,7 +1842,7 @@
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get delivery_boys orverall or by vendor_id",
+			"name": "Report: get delivery_boys by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1886,7 +1886,7 @@
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get rejected orders overall and by vendor_id",
+			"name": "Report: get rejected orders by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [

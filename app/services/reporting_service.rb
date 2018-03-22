@@ -31,9 +31,15 @@ class ReportingService
 
     #RMA REPORTS
     def delivery_boys(params)
-      order_ids = Vendor.find_by(id: params[:vendor_id]).orders.pluck(:id).uniq if params[:vendor_id].present?
+      return if params[:vendor_id].blank?
+
+      vendor = Vendor.find_by(id: params[:vendor_id])
+      return if vendor.blank?
+
+      order_ids = vendor.orders.pluck(:id).uniq
       orders_assignments = OrderAssignment.where(id: order_ids).includes(user: :profile).includes(:order)
-      orders_assignments = OrderAssignment.all.includes(user: :profile).includes(:order) unless orders_assignments.present?
+
+      return if orders_assignments.blank?
 
       assignment_hash = {}
       orders_assignments.each { |assignment|
@@ -56,13 +62,24 @@ class ReportingService
     def busy_resturants(params)
       #TO-DO keep track of busy/unbusy resturants
       vendor = Vendor.where(id: params[:vendor_id], busy: true).first
+
+      return if vendor.blank?
       Restaurant.where(id: vendor.id).collect do |restaurant|
         { name: restaurant.name, busy_time: formatted_time(Time.now), date: formatted_date(Date.today), duration: 0 }
-      end if vendor.present?
+      end
     end
 
     def rejected_orders(params)
-      fetch_orders(params).rejected.includes(:profile).collect do |order|
+      return if params[:vendor_id].blank?
+
+      vendor = Vendor.find_by(id: params[:vendor_id])
+      return if vendor.blank?
+
+      rejected_orders = vendor.orders.rejected.includes(:profile)
+
+      return if rejected_orders.blank?
+
+      rejected_orders.collect do |order|
         {
           order_number: order.id, date: formatted_date(order.created_at), amount: order.total,
           customer_name: order.profile.full_name, contact_number: order.profile.mobile_number
