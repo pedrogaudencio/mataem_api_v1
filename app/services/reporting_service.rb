@@ -8,7 +8,10 @@ class ReportingService
       most_sold_item = order_items.group(:menu_item_id).order('count_id DESC').count(:id).keys.first
       menu_item = MenuItem.find_by_id(most_sold_item)
 
-      { item: menu_item.as_json(except: :vendor), restaurant: menu_item.try(:vendor).try(:restaurant) }
+      {
+        item: menu_item.as_json(except: :vendor, include: [:menu_item_category, :menu_item_cuisine], methods: :image_path ),
+        restaurant: menu_item.try(:vendor).try(:restaurant)
+      }
     end
 
     def rejected_orders

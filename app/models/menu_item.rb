@@ -18,4 +18,8 @@ class MenuItem < ApplicationRecord
   def to_s
     self.name
   end
+
+  def image_path
+    self.image.url
+  end
 end
