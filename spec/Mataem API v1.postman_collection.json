@@ -1842,7 +1842,7 @@
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get delivery_boys orverall or by vendor_id",
+			"name": "Report: get delivery_boys by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1886,7 +1886,7 @@
 			"dataMode": "raw",
 		},
 		{
-			"name": "Report: get rejected orders overall and by vendor_id",
+			"name": "Report: get rejected orders by vendor_id",
 			"description": "",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1907,5 +1907,99 @@
 			"method": "GET",
 			"dataMode": "raw",
 		},
+		{
+			"name": "Report: Best selling restaurants",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/reports/best_selling_resturants",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+		{
+			"name": "Report: Restaurant performances",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+				}
+			],
+			"url": "http://localhost:3000/api/v1/reports/restaurant_performances",
+			"method": "GET",
+			"dataMode": "raw",
+		},
+    {
+      "name": "Report: get Mataem revenue overall or by vendor",
+      "description": "",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+        }
+      ],
+      "url": "http://localhost:3000/api/v1/reports/mataem_revenue?vendor_id=3",
+      "queryParams": [
+        {
+          "key": "vendor_id",
+          "value": "3",
+          "equals": true,
+          "enabled": true
+        },
+      ],
+      "method": "GET",
+      "dataMode": "raw",
+    },
+    {
+      "name": "Report: get due payments overall or by vendor",
+      "description": "",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+        }
+      ],
+      "url": "http://localhost:3000/api/v1/reports/due_payments?vendor_id=3",
+      "queryParams": [
+        {
+          "key": "vendor_id",
+          "value": "3",
+          "equals": true,
+          "enabled": true
+        },
+      ],
+      "method": "GET",
+      "dataMode": "raw",
+    },
+    {
+      "name": "Report: get cookies reward overall or by vendor",
+      "description": "",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+        }
+      ],
+      "url": "http://localhost:3000/api/v1/reports/cookies_rewards?vendor_id=3",
+      "queryParams": [
+        {
+          "key": "vendor_id",
+          "value": "3",
+          "equals": true,
+          "enabled": true
+        },
+      ],
+      "method": "GET",
+      "dataMode": "raw",
+    },
 	]
 }

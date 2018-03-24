@@ -40,7 +40,7 @@ class Api::V1::ReportsController < Api::V1::ApiController
   end
 
   def mataem_revenue
-    render json: ReportingService.mataem_revenue
+    render json: ReportingService.mataem_revenue(params)
   end
 
   def restaurant_performances
@@ -48,10 +48,10 @@ class Api::V1::ReportsController < Api::V1::ApiController
   end
 
   def due_payments
-    render json: ReportingService.due_payments
+    render json: ReportingService.due_payments(params)
   end
 
   def cookies_rewards
-    render json: ReportingService.cookies_rewards
+    render json: ReportingService.cookies_rewards(params)
   end
 end
